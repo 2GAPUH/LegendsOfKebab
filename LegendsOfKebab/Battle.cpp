@@ -5,6 +5,17 @@
 #include <time.h>
 #define SIZE_OF_BATTLE_WINDOW 3068
 
+struct hero
+{
+	int HP, MP, DMG, ARM;
+};
+
+struct enemy
+{
+	int HP, DMG, ARM;
+};
+
+
 void GetBattleWindow(char BattleWindow[])
 {
 	FILE* f;
@@ -23,12 +34,20 @@ void PrintBattlewindow(char BattleWindow[])
 		printf_s("%c", BattleWindow[i]);
 }
 
+void FightWithEnemy()
+{
+
+}
 
 void Battle()
 {
+
+
 	char BattleWindow[SIZE_OF_BATTLE_WINDOW];
 
 	GetBattleWindow(BattleWindow);
 
 	PrintBattlewindow(BattleWindow);
+
+	FightWithEnemy();
 }
