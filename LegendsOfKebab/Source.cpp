@@ -20,18 +20,6 @@ int main()
 
 	int numberOfExercise;
 
-	do
-	{
-		printf("Enter exercise number: "); scanf("%d", &numberOfExercise);
-		switch (numberOfExercise)
-		{
-		case 1:doNumber_1(); break;
-
-
-		case 0:printf("Program finished."); break;
-		default:printf("Invalid exercise number!\n");
-		}
-	} while (numberOfExercise != 0);
 
 
 	return 0;
