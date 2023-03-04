@@ -11,12 +11,14 @@ int main()
 {
 	system("color F0");
 	system("cls");
+	int seed;
+	srand(seed = time(NULL));
 
 	hero Laplas = {234, 61, 27, 3};
 
 
 
-	Laplas = Battle(Laplas);
+	Laplas = Battle(Laplas, seed);
 
 
 

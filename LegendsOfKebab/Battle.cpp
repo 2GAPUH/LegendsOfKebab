@@ -75,11 +75,10 @@ hero UseHealthPotion(hero Laplas)
 }
 
 
-void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[])
+void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[], int seed)
 {
 	char pressedKey;
 	int temp;
-	int distance = 0;
 
 	do {
 		pressedKey = _getch();
@@ -90,31 +89,34 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[])
 			if ((temp = Laplas.DMG - Kostyan.ARM) > 0) Kostyan.HP -= temp;
 		}
 
-		if (pressedKey == 'q' || pressedKey == 'Q' || pressedKey == 'é' || pressedKey == 'É')
+		else if (pressedKey == 'q' || pressedKey == 'Q' || pressedKey == 'é' || pressedKey == 'É')
 		{
 			Laplas = UseHealthPotion(Laplas);
-			if (distance == 0) 
-				if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
+			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
 		}
 
-
+		/*if (pressedKey == 32)
+		{
+			if (rand() % 2 == 0)
+			{
+				if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
+			}
+			else distance = 1;
+		}*/
 
 		else continue;
 		
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
-		
 		PrintBattlewindow(BattleWindow);
 	}while(Laplas.HP > 0 && Kostyan.HP > 0);
-
-
 
 }
 
 
 
 
-hero Battle(hero Laplas)
+hero Battle(hero Laplas, int seed)
 {
 	char BattleWindow[SIZE_OF_BATTLE_WINDOW];
 
@@ -127,7 +129,7 @@ hero Battle(hero Laplas)
 
 	PrintBattlewindow(BattleWindow);
 
-	FightWithEnemy(Laplas, Kostyan, BattleWindow);
+	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed);
 
 	return Laplas;
 }
