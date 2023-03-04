@@ -3,24 +3,32 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#define SIZE_OF_BATTLE_WINDOW 3068
 
-void GetBattleWindow()
+void GetBattleWindow(char BattleWindow[])
 {
 	FILE* f;
-	char Array[31][122];
 
-	fopen_s(&f, "BattleMap.txt", "r");
+	fopen_s(&f, "Battle.txt", "r");
 
-
+	for (int i = 0; i < SIZE_OF_BATTLE_WINDOW; i++)
+		fscanf_s(f, "%c", &BattleWindow[i]);
 
 	fclose(f);
+}
+
+void PrintBattlewindow(char BattleWindow[])
+{
+	for (int i = 0; i < SIZE_OF_BATTLE_WINDOW;i++)
+		printf_s("%c", BattleWindow[i]);
 }
 
 
 void Battle()
 {
-	
+	char BattleWindow[SIZE_OF_BATTLE_WINDOW];
 
+	GetBattleWindow(BattleWindow);
 
-
+	PrintBattlewindow(BattleWindow);
 }
