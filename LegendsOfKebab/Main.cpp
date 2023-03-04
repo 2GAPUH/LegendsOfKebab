@@ -7,13 +7,16 @@
 #include "Battle.h"
 
 
-
 int main()
 {
 	system("color F0");
 	system("cls");
 
-	Battle();
+	hero Laplas = {234, 61, 27, 3};
+
+
+
+	Laplas = Battle(Laplas);
 
 
 
