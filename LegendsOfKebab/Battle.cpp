@@ -43,32 +43,32 @@ void PrintBattlewindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUM
 
 void CheckLaplasStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], hero Laplas)
 {
-	BattleWindow[20][31] = Laplas.HP / 100 + 48;
-	BattleWindow[20][31] = Laplas.HP / 10 % 10 + 48;
-	BattleWindow[20][31] = Laplas.HP % 10 + 48;
+	BattleWindow[25][5] = Laplas.HP / 100 + 48;
+	BattleWindow[25][6] = Laplas.HP / 10 % 10 + 48;
+	BattleWindow[25][7] = Laplas.HP % 10 + 48;
 
-	BattleWindow[20][31] = Laplas.MP / 100 + 48;
-	BattleWindow[20][31] = Laplas.MP / 10 % 10 + 48;
-	BattleWindow[20][31] = Laplas.MP % 10 + 48;
+	BattleWindow[26][5] = Laplas.MP / 100 + 48;
+	BattleWindow[26][6] = Laplas.MP / 10 % 10 + 48;
+	BattleWindow[26][7] = Laplas.MP % 10 + 48;
 
-	BattleWindow[20][31] = Laplas.DMG / 10 % 10 + 48;
-	BattleWindow[20][31] = Laplas.DMG % 10 + 48;
+	BattleWindow[27][6] = Laplas.DMG / 10 % 10 + 48;
+	BattleWindow[27][7] = Laplas.DMG % 10 + 48;
 
-	BattleWindow[20][31] = Laplas.ARM / 10 % 10 + 48;
-	BattleWindow[20][31] = Laplas.ARM % 10 + 48;
+	BattleWindow[28][6] = Laplas.ARM / 10 % 10 + 48;
+	BattleWindow[28][7] = Laplas.ARM % 10 + 48;
 }
 
 void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], enemy unded)
 {
-	BattleWindow[20][31] = unded.HP / 100 + 48;
-	BattleWindow[20][31] = unded.HP / 10 % 10 + 48;
-	BattleWindow[20][31] = unded.HP % 10 + 48;
+	BattleWindow[25][14] = unded.HP / 100 + 48;
+	BattleWindow[25][15] = unded.HP / 10 % 10 + 48;
+	BattleWindow[25][16] = unded.HP % 10 + 48;
 
-	BattleWindow[20][31] = unded.DMG / 10 % 10 + 48;
-	BattleWindow[20][31] = unded.DMG % 10 + 48;
+	BattleWindow[26][15] = unded.DMG / 10 % 10 + 48;
+	BattleWindow[26][16] = unded.DMG % 10 + 48;
 
-	BattleWindow[20][31] = unded.ARM / 10 % 10 + 48;
-	BattleWindow[20][31] = unded.ARM % 10 + 48;
+	BattleWindow[27][15] = unded.ARM / 10 % 10 + 48;
+	BattleWindow[27][16] = unded.ARM % 10 + 48;
 }
 
 hero UseHealthPotion(hero Laplas)
