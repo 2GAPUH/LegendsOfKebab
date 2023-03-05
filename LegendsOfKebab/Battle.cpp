@@ -4,7 +4,9 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
-#define SIZE_OF_BATTLE_WINDOW 3068
+#define BATTLE_WINDOW_ROWS 30
+#define BATTLE_WINDOW_COLUMNS 121
+
 
 struct enemy
 {
@@ -18,53 +20,55 @@ struct hero
 
 
 
-void GetBattleWindow(char BattleWindow[])
+void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
 {
 	FILE* f;
 
 	fopen_s(&f, "Battle.txt", "r");
 
-	for (int i = 0; i < SIZE_OF_BATTLE_WINDOW; i++)
-		fscanf_s(f, "%c", &BattleWindow[i]);
+	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
+		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
+			fscanf_s(f, "%c", &BattleWindow[i][n]);
 
 	fclose(f);
 }
 
-void PrintBattlewindow(char BattleWindow[])
+void PrintBattlewindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
 {
 	system("cls");
-	for (int i = 0; i < SIZE_OF_BATTLE_WINDOW;i++)
-		printf_s("%c", BattleWindow[i]);
+	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
+		for(int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
+			printf_s("%c", BattleWindow[i][n]);
 }
 
-void CheckLaplasStats(char BattleWindow[], hero Laplas)
+void CheckLaplasStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], hero Laplas)
 {
-	BattleWindow[2464] = Laplas.HP / 100 + 48;
-	BattleWindow[2465] = Laplas.HP / 10 % 10 + 48;
-	BattleWindow[2466] = Laplas.HP % 10 + 48;
+	BattleWindow[20][31] = Laplas.HP / 100 + 48;
+	BattleWindow[20][31] = Laplas.HP / 10 % 10 + 48;
+	BattleWindow[20][31] = Laplas.HP % 10 + 48;
 
-	BattleWindow[2586] = Laplas.MP / 100 + 48;
-	BattleWindow[2587] = Laplas.MP / 10 % 10 + 48;
-	BattleWindow[2588] = Laplas.MP % 10 + 48;
+	BattleWindow[20][31] = Laplas.MP / 100 + 48;
+	BattleWindow[20][31] = Laplas.MP / 10 % 10 + 48;
+	BattleWindow[20][31] = Laplas.MP % 10 + 48;
 
-	BattleWindow[2709] = Laplas.DMG / 10 % 10 + 48;
-	BattleWindow[2710] = Laplas.DMG % 10 + 48;
+	BattleWindow[20][31] = Laplas.DMG / 10 % 10 + 48;
+	BattleWindow[20][31] = Laplas.DMG % 10 + 48;
 
-	BattleWindow[2831] = Laplas.ARM / 10 % 10 + 48;
-	BattleWindow[2832] = Laplas.ARM % 10 + 48;
+	BattleWindow[20][31] = Laplas.ARM / 10 % 10 + 48;
+	BattleWindow[20][31] = Laplas.ARM % 10 + 48;
 }
 
-void CheckEnemyStats(char BattleWindow[], enemy unded)
+void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], enemy unded)
 {
-	BattleWindow[2473] = unded.HP / 100 + 48;
-	BattleWindow[2474] = unded.HP / 10 % 10 + 48;
-	BattleWindow[2475] = unded.HP % 10 + 48;
+	BattleWindow[20][31] = unded.HP / 100 + 48;
+	BattleWindow[20][31] = unded.HP / 10 % 10 + 48;
+	BattleWindow[20][31] = unded.HP % 10 + 48;
 
-	BattleWindow[2596] = unded.DMG / 10 % 10 + 48;
-	BattleWindow[2597] = unded.DMG % 10 + 48;
+	BattleWindow[20][31] = unded.DMG / 10 % 10 + 48;
+	BattleWindow[20][31] = unded.DMG % 10 + 48;
 
-	BattleWindow[2718] = unded.ARM / 10 % 10 + 48;
-	BattleWindow[2719] = unded.ARM % 10 + 48;
+	BattleWindow[20][31] = unded.ARM / 10 % 10 + 48;
+	BattleWindow[20][31] = unded.ARM % 10 + 48;
 }
 
 hero UseHealthPotion(hero Laplas)
@@ -75,7 +79,7 @@ hero UseHealthPotion(hero Laplas)
 }
 
 
-void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[], int seed)
+void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed)
 {
 	char pressedKey;
 	int temp;
@@ -118,7 +122,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[], int seed)
 
 hero Battle(hero Laplas, int seed)
 {
-	char BattleWindow[SIZE_OF_BATTLE_WINDOW];
+	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 
 	enemy Kostyan = { 121, 17, 3 };
 
