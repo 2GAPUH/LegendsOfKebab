@@ -29,5 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
+    <Text Include="StartMenu.txt" />
   </ItemGroup>
 </Project>
