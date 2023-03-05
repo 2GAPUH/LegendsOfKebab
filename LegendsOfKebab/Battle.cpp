@@ -16,6 +16,7 @@ struct enemy
 struct hero
 {
 	int HP, MP, DMG, ARM;
+	int MaxHP, MaxMP;
 };
 
 
@@ -75,6 +76,7 @@ hero UseHealthPotion(hero Laplas)
 {
 	int HealthPotion = 50;
 	Laplas.HP += 50;
+	if (Laplas.HP > Laplas.MaxHP) Laplas.HP = Laplas.MaxHP;
 	return Laplas;
 }
 

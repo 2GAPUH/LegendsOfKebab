@@ -6,6 +6,7 @@
 struct hero
 {
 	int HP, MP, DMG, ARM;
+	int MaxHP, MaxMP;
 };
 
 struct enemy
