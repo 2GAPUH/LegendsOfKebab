@@ -132,9 +132,11 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StartMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="StartMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />

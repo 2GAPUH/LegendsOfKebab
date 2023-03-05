@@ -5,6 +5,7 @@
 #include <time.h>
 #include <Windows.h>
 #include "Battle.h"
+#include "StartMenu.h"
 
 
 int main()
