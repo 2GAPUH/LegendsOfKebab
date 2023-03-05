@@ -10,24 +10,37 @@
 
 
 
-void PrintStartMenuWindow(char StartMenuWindow[])
+void PrintStartMenuWindow(char StartMenuWindow[START_MENU_WINDOW_ROWS][START_MENU_WINDOW_COLUMNS])
 {
-
+	system("cls");
+	for (int i = 0; i < START_MENU_WINDOW_ROWS;i++)
+		for (int n = 0; n < START_MENU_WINDOW_COLUMNS; n++)
+			printf_s("%c", StartMenuWindow[i][n]);
 
 }
 
 
-void GetStartMenuWindow(char StartMenuWindow[])
+void GetStartMenuWindow(char StartMenuWindow[START_MENU_WINDOW_ROWS][START_MENU_WINDOW_COLUMNS])
 {
+	FILE* f;
 
+	fopen_s(&f, "StartMenu.txt", "r");
 
+	for (int i = 0; i < START_MENU_WINDOW_ROWS;i++)
+		for (int n = 0; n < START_MENU_WINDOW_COLUMNS; n++)
+			fscanf_s(f, "%c", &StartMenuWindow[i][n]);
+
+	fclose(f);
 }
 
 
 void StartMenu()
 {
+	char StartMenuWindow[START_MENU_WINDOW_ROWS][START_MENU_WINDOW_COLUMNS];
 
+	GetStartMenuWindow(StartMenuWindow);
 
+	PrintStartMenuWindow(StartMenuWindow);
 
-
+	_getch();
 }

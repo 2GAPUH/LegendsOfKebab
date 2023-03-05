@@ -17,7 +17,7 @@ int main()
 
 	hero Laplas = {234, 61, 27, 3};
 
-
+	StartMenu();
 
 	Laplas = Battle(Laplas, seed);
 
