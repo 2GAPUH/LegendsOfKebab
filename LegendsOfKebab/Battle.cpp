@@ -101,17 +101,18 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
 		}
 
-		/*if (pressedKey == 32)
+		else if (pressedKey == 32)
 		{
 			if (rand() % 2 == 0)
-			{
-				if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
-			}
-			else distance = 1;
-		}*/
+				if ((temp = Laplas.DMG*2 - Kostyan.ARM) > 0) Kostyan.HP -= temp;
+			
+			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
+		}
 
 		else continue;
 		
+		if (Kostyan.HP < 1) Kostyan.HP = 0;
+
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
 		PrintBattlewindow(BattleWindow);

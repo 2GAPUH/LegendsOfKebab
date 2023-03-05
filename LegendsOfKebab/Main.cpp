@@ -15,7 +15,7 @@ int main()
 	int seed;
 	srand(seed = time(NULL));
 
-	hero Laplas = {234, 61, 27, 3};
+	hero Laplas = {234, 61, 27, 3, 250, 100};
 
 	StartMenu();
 
