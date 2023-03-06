@@ -12,6 +12,7 @@ int main()
 {
 	system("color F0");
 	system("cls");
+	system("mode con cols=122  lines=31");
 	int seed;
 	srand(seed = time(NULL));
 
