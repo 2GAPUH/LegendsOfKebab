@@ -10,6 +10,7 @@
 
 int main()
 {
+	system("chcp 866");
 	system("color F0");
 	system("cls");
 	system("mode con cols=122  lines=31");

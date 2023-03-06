@@ -140,6 +140,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
+    <Text Include="BattleComments.txt" />
+    <Text Include="C:\Users\sveto\Downloads\map.txt" />
     <Text Include="StartMenu.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
