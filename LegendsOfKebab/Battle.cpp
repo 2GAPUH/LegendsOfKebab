@@ -166,7 +166,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 		else if (pressedKey == 'q' || pressedKey == 'Q' || pressedKey == 137 || pressedKey == 169)
 		{
-
+			BattleCommentsPrint(BattleCommentsPosition, 7);
 		}
 
 		else if (pressedKey == 'e' || pressedKey == 'E')
