@@ -82,6 +82,9 @@ void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 
 	BattleWindow[27][15] = unded.ARM / 10 % 10 + 48;
 	BattleWindow[27][16] = unded.ARM % 10 + 48;
+
+
+
 }
 
 hero UseHealthPotion(hero Laplas)
