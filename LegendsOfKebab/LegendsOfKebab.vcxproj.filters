@@ -64,7 +64,13 @@
     <Text Include="StartMenu.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
-    <Text Include="BattleComments.txt">
+    <Text Include="HeroBattleComments.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="EnemyBattleComments.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Events.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>

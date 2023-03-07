@@ -144,7 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
-    <Text Include="BattleComments.txt" />
+    <Text Include="Events.txt" />
+    <Text Include="HeroBattleComments.txt" />
+    <Text Include="EnemyBattleComments.txt" />
     <Text Include="Inventory.txt" />
     <Text Include="StartMenu.txt" />
     <Text Include="Trader_Buy.txt" />
