@@ -36,12 +36,22 @@ void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 	fclose(f);
 }
 
-void PrintBattlewindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
+void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
+{
+	for (int i = 0; i < BATTLE_COMMENTS_COLUMNS; i++)
+	{
+		*BattleCommentsPosition[i] = 32;
+
+	}
+}
+
+void PrintBattlewindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 {
 	system("cls");
 	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
 		for(int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
 			printf_s("%c", BattleWindow[i][n]);
+	BattleCommentsClear(BattleCommentsPosition);
 }
 
 void CheckLaplasStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], hero Laplas)
@@ -94,7 +104,7 @@ void GetBattleComments()
 		{
 			fscanf_s(file, "%c", &temp);
 			BattleComments[i][n] = temp;
-			if (temp == '$') break;
+			if (temp == '\n') break;
 
 		}
 
@@ -102,7 +112,7 @@ void GetBattleComments()
 }
 
 
-void GetBattleCommentsPosition(char* BattleCommentsPosition[BATTLE_WINDOW_ROWS], char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
+void GetBattleCommentsPosition(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
 {
 	int n = 24, j = 45;
 	for (int i = 0;i < BATTLE_COMMENTS_COLUMNS; i++, j++)
@@ -121,11 +131,12 @@ void BattleCommentsPrint(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], 
 {
 	for (int i = 0; i < BATTLE_COMMENTS_COLUMNS; i++)
 	{
-		if (BattleComments[type][i] == '$') break;
+		if (BattleComments[type][i] == '\n') break;
 		*BattleCommentsPosition[i] = BattleComments[type][i];
 
 	}
 }
+
 
 
 
@@ -149,6 +160,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		{
 			Laplas = UseHealthPotion(Laplas);
 			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
+			BattleCommentsPrint(BattleCommentsPosition, 7);
 		}
 
 		else if (pressedKey == 32)
@@ -165,7 +177,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
-		PrintBattlewindow(BattleWindow);
+		PrintBattlewindow(BattleWindow, BattleCommentsPosition);
 	}while(Laplas.HP > 0 && Kostyan.HP > 0);
 
 }
@@ -176,7 +188,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 hero Battle(hero Laplas, int seed)
 {
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
-	char* BattleCommentsPosition[BATTLE_WINDOW_ROWS];
+	char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS];
 
 	enemy Kostyan = { 121, 17, 3 };
 
@@ -186,7 +198,7 @@ hero Battle(hero Laplas, int seed)
 
 	CheckLaplasStats(BattleWindow,Laplas);
 	CheckEnemyStats(BattleWindow, Kostyan);
-	PrintBattlewindow(BattleWindow);
+	PrintBattlewindow(BattleWindow, BattleCommentsPosition);
 
 
 	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, BattleCommentsPosition);
