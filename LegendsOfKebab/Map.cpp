@@ -5,7 +5,10 @@
 #include <time.h>
 #include <conio.h>
 #include <windows.h>
+#include "Battle.h"
+
 #pragma comment (lib, "winmm.lib")
+
 
 //---window properties-—
 #define WINDOW_HEIGHT 30
@@ -36,7 +39,7 @@
 //----------------
 
 //---------structures--------------
-struct Hero
+struct HeroMap
 {
 	int x;
 	int y;
@@ -63,7 +66,7 @@ struct AnLocCord //another locations coordinates
 
 //-----------------------------------
 
-void PrintMap(Hero hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH], Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL])
+void PrintMap(HeroMap hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH], Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL])
 {
 	system("cls");
 	for (int i = 0; i < WINDOW_HEIGHT; i++)
@@ -98,18 +101,19 @@ void GetMapFromFile(const char* filename, char map[WINDOW_HEIGHT][WINDOW_WIDTH])
 	fclose(f);
 }
 
-void heroColision(Hero hero, Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL]) {
-	if (hero.x == enemyes[0].x && hero.y == enemyes[0].y)
+void heroColision(HeroMap hero1, Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL]) {
+	hero Laplas1 = { 234, 61, 27, 3, 250, 100, 0, 0 };
+	if (hero1.x == enemyes[0].x && hero1.y == enemyes[0].y)
 	{
-		//start battle
+		Battle(Laplas1, 123);
 	}
-	else if (hero.x == npcs[0].x && hero.y == npcs[0].y)
+	else if (hero1.x == npcs[0].x && hero1.y == npcs[0].y)
 	{
 		//open shop
 	}
 }
 
-void heroMovement(Hero* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]) {
+void heroMovement(HeroMap* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]) {
 	char inputButton = _getch();
 	switch (inputButton)
 	{
@@ -152,13 +156,13 @@ int map() {
 	Npc npcs[NPC_FL] = { {6,25} };
 
 	GetMapFromFile(locations[currentLocation], map);
-	Hero hero = { 10,25 };
-	PrintMap(hero, map, enemyes, npcs);
+	HeroMap hero1 = { 10,25 };
+	PrintMap(hero1, map, enemyes, npcs);
 	while (true)
 	{
-		PrintMap(hero, map, enemyes, npcs);
-		heroMovement(&hero, map);
-		heroColision(hero,enemyes,npcs);
+		PrintMap(hero1, map, enemyes, npcs);
+		heroMovement(&hero1, map);
+		heroColision(hero1,enemyes,npcs);
 	}
 
 	system("pause");

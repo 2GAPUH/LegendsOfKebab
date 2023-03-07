@@ -17,12 +17,16 @@
 #define ENEMY 0
 #define NPC 1
 
-struct Hero
+struct HeroMap
 {
 	int x;
 	int y;
 
 };
+
+
+
+
 
 struct Enemy
 {
@@ -43,7 +47,7 @@ struct AnLocCord
 };
 
 int map();
-void heroMovement(Hero* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]);
-void heroColision(Hero hero, Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL]);
+void heroMovement(HeroMap* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]);
+void heroColision(HeroMap hero, Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL]);
 void GetMapFromFile(const char* filename, char map[WINDOW_HEIGHT][WINDOW_WIDTH]);
-void PrintMap(Hero hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH], Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL]);
+void PrintMap(HeroMap hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH], Enemy enemyes[ENEMY_FL], Npc npcs[NPC_FL]);
