@@ -18,7 +18,7 @@ int main()
 	int seed, a;
 	srand(seed = time(NULL));
 
-	hero Laplas = {234, 61, 27, 3, 250, 100};
+	hero Laplas = {234, 61, 27, 3, 250, 100, 0, 0};
 	heroTr LaplasTr = { 200, 65, 30, 50, 760 };
 	cost Cost = { 500, 500, 50, 50, 150 };
 

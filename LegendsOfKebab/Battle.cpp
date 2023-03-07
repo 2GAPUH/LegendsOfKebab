@@ -9,17 +9,22 @@
 #define BATTLE_WINDOW_COLUMNS 121
 #define BATTLE_COMMENTS_COUNT 10
 #define BATTLE_COMMENTS_COLUMNS 365
+#define FIREBALL_DAMAGE 100
+#define BURNING_DAMAGE 20
 char BattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 
 struct enemy
 {
 	int HP, DMG, ARM;
+	int Stun, Burning;
 };
 
 struct hero
 {
 	int HP, MP, DMG, ARM;
 	int MaxHP, MaxMP;
+	int Resist;
+	int Crit;
 };
 
 
@@ -46,7 +51,7 @@ void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 	}
 }
 
-void PrintBattlewindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
+void PrintBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 {
 	system("cls");
 	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
@@ -141,13 +146,69 @@ void BattleCommentsPrint(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], 
 	}
 }
 
+int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
+{
+	//Горение
+	if (Kostyan->Burning > 0)
+	{
+		Kostyan->Burning -= 1;
+		Kostyan->HP -= BURNING_DAMAGE;
+	}
+	//Крит
+	if (pressedKey == 32)
+		Laplas->Crit += 1;
+	//Сплэл стены
+	if (pressedKey == '4')
+	{
+		Laplas->Resist = 1;
+	}
+	//Спэл молнии
+	if(pressedKey == '1')
+	{
+		Kostyan->Stun = 1;
+		return 0;
+	}
+	//Атака Костяна
+	if (Laplas->Resist == 0 && Kostyan->Stun == 0)
+	{
+		if (Laplas->ARM < Kostyan->DMG) Laplas->HP -= (Kostyan->DMG - Laplas->ARM);
+	}
+	else
+	{
+		Laplas->Resist = 0;
+		Kostyan->Stun = 0;
+	}
+	//Огненый шар
+	if (pressedKey == '2')
+	{
+		Kostyan->HP -= FIREBALL_DAMAGE;
+		return 0;
+	}
+	//Спэл поджога
+	if (pressedKey == '3')
+	{
+		Kostyan->Burning = 3;
+		return 0;
+	}
+	//Атака лапласа
+	if (Laplas->DMG > Kostyan->ARM && Laplas->Crit < 1)
+		Kostyan->HP -= (Laplas->DMG - Kostyan->ARM);
+	//Крит лапласа
+	if (Laplas->Crit > 0)
+	{
+		Laplas->Crit -= 1;
+		if (rand() % 2  == 0 && Laplas->DMG > Kostyan->ARM)
+			Kostyan->HP -= (Laplas->DMG - Kostyan->ARM)* 2;
+	}
 
+}
 
 
 void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 {
 	char pressedKey;
-	int temp;
+	int temp, tempSpel;
+
 
 	do {
 		pressedKey = _getch();
@@ -158,28 +219,33 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 		if (pressedKey == 13)
 		{
-			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
-			if ((temp = Laplas.DMG - Kostyan.ARM) > 0) Kostyan.HP -= temp;
-
+			FightCalculation(&Laplas, &Kostyan, pressedKey);
 			BattleCommentsPrint(BattleCommentsPosition, 1);
 		}
 
 		else if (pressedKey == 'q' || pressedKey == 'Q' || pressedKey == 137 || pressedKey == 169)
 		{
 			BattleCommentsPrint(BattleCommentsPosition, 7);
+			PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+			pressedKey = _getch();
+			
+			if (pressedKey == '1' || pressedKey == '2' || pressedKey == '3' || pressedKey == '4')
+			{
+				tempSpel = FightCalculation(&Laplas, &Kostyan, pressedKey);
+				//BattleCommentsPrint(BattleCommentsPosition, tempSpel);
+			}
+			else if (pressedKey == '0') 
+				PrintBattleWindow(BattleWindow, BattleCommentsPosition);;
 		}
 
 		else if (pressedKey == 'e' || pressedKey == 'E')
 		{
-
+			FightCalculation(&Laplas, &Kostyan, pressedKey);
 		}
 
 		else if (pressedKey == 32)
 		{
-			if (rand() % 2 == 0)
-				if ((temp = Laplas.DMG*2 - Kostyan.ARM) > 0) Kostyan.HP -= temp;
-			
-			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
+			FightCalculation(&Laplas, &Kostyan, pressedKey);
 		}
 
 		else continue;
@@ -188,7 +254,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
-		PrintBattlewindow(BattleWindow, BattleCommentsPosition);
+		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 	}while(Laplas.HP > 0 && Kostyan.HP > 0);
 
 }
@@ -201,7 +267,7 @@ hero Battle(hero Laplas, int seed)
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 	char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS];
 
-	enemy Kostyan = { 121, 17, 3 };
+	enemy Kostyan = { 121, 17, 3 , 0, 0};
 
 	GetBattleWindow(BattleWindow);
 	GetBattleComments();
@@ -209,7 +275,7 @@ hero Battle(hero Laplas, int seed)
 
 	CheckLaplasStats(BattleWindow,Laplas);
 	CheckEnemyStats(BattleWindow, Kostyan);
-	PrintBattlewindow(BattleWindow, BattleCommentsPosition);
+	PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 
 
 	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, BattleCommentsPosition);

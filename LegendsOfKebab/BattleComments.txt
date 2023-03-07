@@ -5,4 +5,4 @@ Slowly swinging you hit the enemy right on the head!
 Unlucky Hero Super Atack
 Slowly swinging you attack the enemy, but he is faster...
 Spellcast
-1 - Lightning attack (imposes a stun effect)                             2 - Fireball (spell with high damage).                                   3 - Fire Rain (Inflicts Ignite and Damage Over Time)                     4 - Stone Wall (Blocks the target's attack)                              5 - Detroit Smash(Increases damage by one hit)                           
+1 - Lightning attack (imposes a stun effect)                             2 - Fireball (spell with high damage).                                   3 - Fire Rain (Inflicts Ignite and Damage Over Time)                     4 - Stone Wall (Blocks the target's attack)                              0 - Exit                                                                 

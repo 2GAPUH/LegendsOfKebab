@@ -8,15 +8,18 @@ struct hero
 {
 	int HP, MP, DMG, ARM;
 	int MaxHP, MaxMP;
+	int Resist;
+	int Crit;
 };
 
 struct enemy
 {
 	int HP, DMG, ARM;
+	int Stun, Burning;
 };
 
 void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS]);
-void PrintBattlewindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS]);
+void PrintBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS]);
 void CheckLaplasStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], hero Laplas);
 void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], enemy unded);
 hero UseHealthPotion(hero Laplas);
@@ -26,3 +29,4 @@ void BattleCommentsPrint(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], 
 void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_WINDOW_ROWS]);
 hero Battle(hero Laplas, int seed);
 void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS]);
+int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey);
