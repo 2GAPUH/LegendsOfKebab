@@ -11,6 +11,11 @@
 #define BATTLE_COMMENTS_COLUMNS 365
 #define FIREBALL_DAMAGE 100
 #define BURNING_DAMAGE 20
+#define LIGHTING_ATACK_MANA_COST 50
+#define FIREBALL_MANA_COST 100
+#define FIRE_RAIN_MANA_COST 20
+#define STONE_WALL_MANA_COST 40
+
 char BattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 
 struct enemy
@@ -212,10 +217,6 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 	do {
 		pressedKey = _getch();
-		
-		system("color 0F");
-		Sleep(50);
-		system("color F0");
 
 		if (pressedKey == 13)
 		{
@@ -231,11 +232,24 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 			
 			if (pressedKey == '1' || pressedKey == '2' || pressedKey == '3' || pressedKey == '4')
 			{
+				if (pressedKey == '1' && Laplas.MP >= LIGHTING_ATACK_MANA_COST)
+					Laplas.MP -= LIGHTING_ATACK_MANA_COST;
+				else if (pressedKey == '2' && Laplas.MP >= FIREBALL_MANA_COST)
+					Laplas.MP -= FIREBALL_MANA_COST;
+				else if (pressedKey == '3' && Laplas.MP >= FIRE_RAIN_MANA_COST)
+					Laplas.MP -= FIRE_RAIN_MANA_COST;
+				else if (pressedKey == '4' && Laplas.MP >= STONE_WALL_MANA_COST)
+					Laplas.MP -= STONE_WALL_MANA_COST;
+				else
+				{
+					PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+					continue;
+				}
 				tempSpel = FightCalculation(&Laplas, &Kostyan, pressedKey);
 				//BattleCommentsPrint(BattleCommentsPosition, tempSpel);
 			}
 			else if (pressedKey == '0') 
-				PrintBattleWindow(BattleWindow, BattleCommentsPosition);;
+				PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 		}
 
 		else if (pressedKey == 'e' || pressedKey == 'E')
