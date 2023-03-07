@@ -46,9 +46,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Battle.txt" />
-    <Text Include="StartMenu.txt" />
-    <Text Include="Inventory.txt" />
     <Text Include="Trader_Buy.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
@@ -56,6 +53,18 @@
       <Filter>Файлы ресурсов</Filter>
     </Text>
     <Text Include="Trader_Sell.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Battle.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Inventory.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="StartMenu.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="BattleComments.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>
