@@ -24,6 +24,12 @@
     <ClCompile Include="StartMenu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Trader.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h">
@@ -32,11 +38,25 @@
     <ClInclude Include="StartMenu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Trader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
     <Text Include="StartMenu.txt" />
-    <Text Include="BattleComments.txt" />
-    <Text Include="C:\Users\sveto\Downloads\map.txt" />
+    <Text Include="Inventory.txt" />
+    <Text Include="Trader_Buy.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Trader_Menu.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Trader_Sell.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>

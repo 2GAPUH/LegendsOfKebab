@@ -128,21 +128,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Main.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="StartMenu.cpp" />
+    <ClCompile Include="Trader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="StartMenu.h" />
+    <ClInclude Include="Trader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
-    <Text Include="BattleComments.txt" />
-    <Text Include="C:\Users\sveto\Downloads\map.txt" />
+    <Text Include="Inventory.txt" />
     <Text Include="StartMenu.txt" />
+    <Text Include="Trader_Buy.txt" />
+    <Text Include="Trader_Menu.txt" />
+    <Text Include="Trader_Sell.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
