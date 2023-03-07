@@ -4,6 +4,7 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
+#include <windows.h>
 #define BATTLE_WINDOW_ROWS 30
 #define BATTLE_WINDOW_COLUMNS 121
 #define BATTLE_COMMENTS_COUNT 10
@@ -151,6 +152,10 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 	do {
 		pressedKey = _getch();
 		
+		system("color 0F");
+		Sleep(50);
+		system("color F0");
+
 		if (pressedKey == 13)
 		{
 			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
@@ -161,9 +166,12 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 		else if (pressedKey == 'q' || pressedKey == 'Q' || pressedKey == 137 || pressedKey == 169)
 		{
-			Laplas = UseHealthPotion(Laplas);
-			if ((temp = Kostyan.DMG - Laplas.ARM) > 0) Laplas.HP -= temp;
-			BattleCommentsPrint(BattleCommentsPosition, 7);
+
+		}
+
+		else if (pressedKey == 'e' || pressedKey == 'E')
+		{
+
 		}
 
 		else if (pressedKey == 32)

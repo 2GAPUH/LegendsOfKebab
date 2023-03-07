@@ -4,7 +4,5 @@ Lucky Hero Super Atack
 Slowly swinging you hit the enemy right on the head!
 Unlucky Hero Super Atack
 Slowly swinging you attack the enemy, but he is faster...
-Heal
-You decide to replenish your health, but the enemy does not wait and hits you in the chest!
-Mana potion use
-You quickly grab a mana potion in hopes of replenishing your mana, but a smart enemy throws a rock at you.
+Spellcast
+1 - Lightning attack (imposes a stun effect).                           2 - Fireball (spell with high damage).                                    3 - Fire Rain (Inflicts Ignite and Damage Over Time)                    4 - Stone Wall (Blocks the target's attack)                              
