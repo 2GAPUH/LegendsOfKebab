@@ -8,6 +8,8 @@
 #include "StartMenu.h"
 #include "Trader.h"
 #include "Inventory.h"
+#include "Map.h"
+
 
 int main()
 {
@@ -26,8 +28,8 @@ int main()
 
 	do {
 		system("cls");
-		printf("Trade(1) or Inv(2) or Battle(3)?"); scanf("%d", &a);
-	} while (a != 1 && a != 2 && a != 3);
+		printf("Trade(1) or Inv(2) or Battle(3) or Map(4)?"); scanf("%d", &a);
+	} while (a != 1 && a != 2 && a != 3 && a != 4);
 
 	if (a == 1)
 		LaplasTr = Trade(LaplasTr, seed);
@@ -35,6 +37,8 @@ int main()
 		LaplasTr = Inventory(LaplasTr, seed);
 	else if (a ==3)
 		Laplas = Battle(Laplas, seed);
+	else if (a == 4)
+		map();
 
 
 
