@@ -147,7 +147,7 @@ void heroMovement(HeroMap* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]) {
 
 
 int map() {
-	system("chcp 866");
+	system("chcp 1251");
 	char locations[2][20] = { "maps/map.txt","maps/house.txt" };
 	int currentLocation = FIRST_LOCATION;
 	PlaySound(L"main_full.wav", NULL, SND_LOOP | SND_ASYNC);

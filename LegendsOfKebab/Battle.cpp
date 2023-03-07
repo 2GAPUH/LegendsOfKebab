@@ -315,6 +315,8 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 hero Battle(hero Laplas, int seed)
 {
+	system("chcp 866");
+	system("cls");
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 	char* CommentsPosition[BATTLE_COMMENTS_COLUMNS];
 
@@ -331,5 +333,7 @@ hero Battle(hero Laplas, int seed)
 
 	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition);
 
+
+	system("chcp 1251");
 	return Laplas;
 }
