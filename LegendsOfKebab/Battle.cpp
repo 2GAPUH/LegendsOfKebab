@@ -11,11 +11,6 @@
 #define BATTLE_COMMENTS_COLUMNS 365
 #define FIREBALL_DAMAGE 100
 #define BURNING_DAMAGE 20
-#define LIGHTING_ATACK_MANA_COST 50
-#define FIREBALL_MANA_COST 100
-#define FIRE_RAIN_MANA_COST 20
-#define STONE_WALL_MANA_COST 40
-
 char BattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 
 struct enemy
@@ -26,7 +21,7 @@ struct enemy
 
 struct hero
 {
-	int HP, MP, DMG, ARM;
+	int HP, MP, DMG, ARM, MON;
 	int MaxHP, MaxMP;
 	int Resist;
 	int Crit;
@@ -40,7 +35,7 @@ void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 
 	fopen_s(&f, "Battle.txt", "r");
 
-	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
+	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
 		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
 			fscanf_s(f, "%c", &BattleWindow[i][n]);
 
@@ -59,8 +54,8 @@ void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 void PrintBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 {
 	system("cls");
-	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
-		for(int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
+	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
+		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
 			printf_s("%c", BattleWindow[i][n]);
 	BattleCommentsClear(BattleCommentsPosition);
 }
@@ -113,7 +108,7 @@ void GetBattleComments()
 
 	fopen_s(&file, "BattleComments.txt", "r");
 
-	for (int i = 0; i < BATTLE_COMMENTS_COUNT;i++)
+	for (int i = 0; i < BATTLE_COMMENTS_COUNT; i++)
 		for (int n = 0; n < BATTLE_COMMENTS_COLUMNS; n++)
 		{
 			fscanf_s(file, "%c", &temp);
@@ -129,7 +124,7 @@ void GetBattleComments()
 void GetBattleCommentsPosition(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
 {
 	int n = 24, j = 45;
-	for (int i = 0;i < BATTLE_COMMENTS_COLUMNS; i++, j++)
+	for (int i = 0; i < BATTLE_COMMENTS_COLUMNS; i++, j++)
 	{
 		if (j == 118)
 		{
@@ -151,7 +146,7 @@ void BattleCommentsPrint(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], 
 	}
 }
 
-int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
+int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey)
 {
 	//Горение
 	if (Kostyan->Burning > 0)
@@ -168,7 +163,7 @@ int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
 		Laplas->Resist = 1;
 	}
 	//Спэл молнии
-	if(pressedKey == '1')
+	if (pressedKey == '1')
 	{
 		Kostyan->Stun = 1;
 		return 0;
@@ -202,8 +197,8 @@ int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
 	if (Laplas->Crit > 0)
 	{
 		Laplas->Crit -= 1;
-		if (rand() % 2  == 0 && Laplas->DMG > Kostyan->ARM)
-			Kostyan->HP -= (Laplas->DMG - Kostyan->ARM)* 2;
+		if (rand() % 2 == 0 && Laplas->DMG > Kostyan->ARM)
+			Kostyan->HP -= (Laplas->DMG - Kostyan->ARM) * 2;
 	}
 
 }
@@ -218,6 +213,10 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 	do {
 		pressedKey = _getch();
 
+		system("color 0F");
+		Sleep(50);
+		system("color F0");
+
 		if (pressedKey == 13)
 		{
 			FightCalculation(&Laplas, &Kostyan, pressedKey);
@@ -229,27 +228,14 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 			BattleCommentsPrint(BattleCommentsPosition, 7);
 			PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 			pressedKey = _getch();
-			
+
 			if (pressedKey == '1' || pressedKey == '2' || pressedKey == '3' || pressedKey == '4')
 			{
-				if (pressedKey == '1' && Laplas.MP >= LIGHTING_ATACK_MANA_COST)
-					Laplas.MP -= LIGHTING_ATACK_MANA_COST;
-				else if (pressedKey == '2' && Laplas.MP >= FIREBALL_MANA_COST)
-					Laplas.MP -= FIREBALL_MANA_COST;
-				else if (pressedKey == '3' && Laplas.MP >= FIRE_RAIN_MANA_COST)
-					Laplas.MP -= FIRE_RAIN_MANA_COST;
-				else if (pressedKey == '4' && Laplas.MP >= STONE_WALL_MANA_COST)
-					Laplas.MP -= STONE_WALL_MANA_COST;
-				else
-				{
-					PrintBattleWindow(BattleWindow, BattleCommentsPosition);
-					continue;
-				}
 				tempSpel = FightCalculation(&Laplas, &Kostyan, pressedKey);
 				//BattleCommentsPrint(BattleCommentsPosition, tempSpel);
 			}
-			else if (pressedKey == '0') 
-				PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+			else if (pressedKey == '0')
+				PrintBattleWindow(BattleWindow, BattleCommentsPosition);;
 		}
 
 		else if (pressedKey == 'e' || pressedKey == 'E')
@@ -263,13 +249,13 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		}
 
 		else continue;
-		
+
 		if (Kostyan.HP < 1) Kostyan.HP = 0;
 
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
-	}while(Laplas.HP > 0 && Kostyan.HP > 0);
+	} while (Laplas.HP > 0 && Kostyan.HP > 0);
 
 }
 
@@ -281,13 +267,13 @@ hero Battle(hero Laplas, int seed)
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 	char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS];
 
-	enemy Kostyan = { 121, 17, 3 , 0, 0};
+	enemy Kostyan = { 121, 17, 3 , 0, 0 };
 
 	GetBattleWindow(BattleWindow);
 	GetBattleComments();
 	GetBattleCommentsPosition(BattleCommentsPosition, BattleWindow);
 
-	CheckLaplasStats(BattleWindow,Laplas);
+	CheckLaplasStats(BattleWindow, Laplas);
 	CheckEnemyStats(BattleWindow, Kostyan);
 	PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 

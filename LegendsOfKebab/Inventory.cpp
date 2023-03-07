@@ -10,9 +10,12 @@
 #define INVENTORY_WINDOW_ROWS 30
 #define INVENTORY_WINDOW_COLUMNS 120
 
-struct heroTr
+struct hero
 {
 	int HP, MP, DMG, ARM, MON;
+	int MaxHP, MaxMP;
+	int Resist;
+	int Crit;
 };
 
 struct cost
@@ -43,7 +46,7 @@ void PrintInventoryWindow(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_
 			printf_s("%c", InventoryWindow[i][n]);
 }
 
-void CheckLaplasInvStats(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], heroTr Laplas)
+void CheckLaplasInvStats(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], hero Laplas)
 {
 
 	InventoryWindow[24][6] = Laplas.DMG / 100 + 48;
@@ -73,7 +76,7 @@ void InventoryMas()
 
 }
 
-heroTr Inventory(heroTr Laplas, int seed)
+hero Inventory(hero Laplas, int seed)
 {
 	char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS];
 

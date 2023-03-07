@@ -10,9 +10,12 @@
 #define TRADE_WINDOW_ROWS 30
 #define TRADE_WINDOW_COLUMNS 121
 
-struct heroTr
+struct hero
 {
 	int HP, MP, DMG, ARM, MON;
+	int MaxHP, MaxMP;
+	int Resist;
+	int Crit;
 };
 
 struct cost
@@ -67,7 +70,7 @@ void PrintTradeWindow(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS])
 			printf_s("%c", TradeWindow[i][n]);
 }
 
-void CheckLaplasTradeStats(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], heroTr Laplas)
+void CheckLaplasTradeStats(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], hero Laplas)
 {
 	TradeWindow[24][6] = Laplas.DMG / 100 + 48;
 	TradeWindow[24][7] = Laplas.DMG / 10 % 10 + 48;
@@ -114,7 +117,7 @@ void CheckCostStats(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], c
 	TradeWindow[27][60] = Cost.cost5 % 10 + 48;
 }
 
-void TradingWithTraderBuy(heroTr Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed)
+void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed)
 {
 	char pressedKey;
 	char ans;
@@ -259,7 +262,7 @@ void TradingWithTraderBuy(heroTr Laplas, cost Cost, char TradeWindow[TRADE_WINDO
 	} while (pressedKey != 27);
 }
 
-void TradingWithTraderSell(heroTr Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed)
+void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed)
 {
 	char pressedKey;
 	char ans;
@@ -357,14 +360,14 @@ void TradingWithTraderSell(heroTr Laplas, cost Cost, char TradeWindow[TRADE_WIND
 	} while (pressedKey != 27);
 }
 
-
-heroTr Trade(heroTr Laplas, int seed)
+hero Trade(hero Laplas, int seed)
 {
 	char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS];
 
-	cost Cost = { 500, 50, 50, 500, 150 };
+	cost Cost = { 600, 50, 50, 500, 150 };
 
 	GetTradeMenuWindow(TradeWindow);
+	CheckLaplasTradeStats(TradeWindow, Laplas);
 	PrintTradeWindow(TradeWindow);
 
 	char pressedKey;
@@ -375,6 +378,8 @@ heroTr Trade(heroTr Laplas, int seed)
 		if (pressedKey == '1')
 		{
 			GetTradeBuyWindow(TradeWindow);
+			CheckLaplasTradeStats(TradeWindow, Laplas);
+			CheckCostStats(TradeWindow, Cost);
 			PrintTradeWindow(TradeWindow);
 			TradingWithTraderBuy(Laplas, Cost, TradeWindow, seed);
 			GetTradeMenuWindow(TradeWindow);
@@ -383,6 +388,7 @@ heroTr Trade(heroTr Laplas, int seed)
 		else if (pressedKey == '2')
 		{
 			GetTradeSellWindow(TradeWindow);
+			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
 			TradingWithTraderSell(Laplas, Cost, TradeWindow, seed);
 			GetTradeMenuWindow(TradeWindow);

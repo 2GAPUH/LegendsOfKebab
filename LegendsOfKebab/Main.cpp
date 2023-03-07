@@ -18,9 +18,7 @@ int main()
 	int seed, a;
 	srand(seed = time(NULL));
 
-	hero Laplas = {234, 61, 27, 3, 250, 100, 0, 0};
-	heroTr LaplasTr = { 200, 65, 30, 50, 760 };
-	cost Cost = { 500, 500, 50, 50, 150 };
+	hero Laplas = { 200, 65, 30, 20, 760, 250, 100, 0, 0 };
 
 	StartMenu();
 
@@ -30,10 +28,10 @@ int main()
 	} while (a != 1 && a != 2 && a != 3);
 
 	if (a == 1)
-		LaplasTr = Trade(LaplasTr, seed);
+		Laplas = Trade(Laplas, seed);
 	else if (a == 2)
-		LaplasTr = Inventory(LaplasTr, seed);
-	else if (a ==3)
+		Laplas = Inventory(Laplas, seed);
+	else if (a == 3)
 		Laplas = Battle(Laplas, seed);
 
 
