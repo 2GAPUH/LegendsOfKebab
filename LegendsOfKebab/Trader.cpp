@@ -10,7 +10,7 @@
 #define TRADE_WINDOW_ROWS 30
 #define TRADE_WINDOW_COLUMNS 121
 #define TRADE_COMMENTS_COUNT 30
-#define TRADE_COMMENTS_COLUMNS 365
+#define TRADE_COMMENTS_COLUMNS 270//265
 char TradeComments[TRADE_COMMENTS_COUNT][TRADE_COMMENTS_COLUMNS];
 int CorretPosition = 0;
 
@@ -55,6 +55,7 @@ void TradeCommentsClear(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS])
 
 	}
 	CorretPosition = 0;
+
 }
 
 
@@ -191,16 +192,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 
 		if (pressedKey == 'a' || pressedKey == 'A' || pressedKey == 'ô' || pressedKey == 'Ô')
 		{
-		//	system("cls");
-		//	printf("Upgrade Sword - Gives you 30 DMG");
-		//	printf("\nDo you want to Upgrade Sword?");
-		//	printf("\n1 - Yes");
-		//	printf("\n0 - No");
 			TradeCommentsPrint(TradeCommentsPosition, 1, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 2, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
 			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -213,7 +210,9 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 				}
 				else
 				{
-					printf("\nYou don't have enought money! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -224,11 +223,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 		}
 		else if (pressedKey == 'b' || pressedKey == 'B' || pressedKey == 'è' || pressedKey == 'È')
 		{
-			system("cls");
-			printf("Health Potion - Restores 50 HP");
-			printf("\nDo you want to buy a Health Potion?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 7, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 8, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -237,7 +237,9 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 				if (Laplas.MON - Cost.cost2 > 0) Laplas.MON -= Cost.cost2;
 				else
 				{
-					printf("\nYou don't have enought money! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -248,11 +250,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 		}
 		else if (pressedKey == 'c' || pressedKey == 'C' || pressedKey == 'ñ' || pressedKey == 'Ñ')
 		{
-			system("cls");
-			printf("Mana Potion - Restores 50 MP");
-			printf("\nDo you want to buy a Mana Potion?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 10, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 11, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -261,7 +264,9 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 				if (Laplas.MON - Cost.cost3 > 0) Laplas.MON -= Cost.cost3;
 				else
 				{
-					printf("\nYou don't have enought money! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -272,11 +277,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 		}
 		else if (pressedKey == 'd' || pressedKey == 'D' || pressedKey == 'â' || pressedKey == 'Â')
 		{
-			system("cls");
-			printf("Upgrade Armor - Gives you 15 ARM");
-			printf("\nDo you want to Upgrade Armor?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 13, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 14, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -289,7 +295,9 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 				}
 				else
 				{
-					printf("\nYou don't have enought money! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -300,11 +308,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 		}
 		else if (pressedKey == 'e' || pressedKey == 'E' || pressedKey == 'ó' || pressedKey == 'Ó')
 		{
-			system("cls");
-			printf("Kebab - Restores 75 HP and 75 MP");
-			printf("\nDo you want to buy a Kebab?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 16, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 17, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -313,7 +322,9 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 				if (Laplas.MON - Cost.cost5 > 0) Laplas.MON -= Cost.cost5;
 				else
 				{
-					printf("\nYou don't have enought money! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -326,10 +337,11 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 		CheckLaplasTradeStats(TradeWindow, Laplas);
 		CheckCostStats(TradeWindow, Cost);
 		PrintTradeWindow(TradeWindow);
+		TradeCommentsClear(TradeCommentsPosition);
 	} while (pressedKey != 27);
 }
 
-void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed)
+void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
 {
 	char pressedKey;
 	char ans;
@@ -341,10 +353,11 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 
 		if (pressedKey == '1')
 		{
-			system("cls");
-			printf("\nDo you want to sell your Health Potion?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 18, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -358,7 +371,9 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 				}
 				else
 				{
-					printf("\nYou don't have enought Health Potion! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -369,10 +384,11 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 		}
 		else if (pressedKey == '2')
 		{
-			system("cls");
-			printf("\nDo you want to sell your Mana Potion?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 19, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -385,7 +401,9 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 				}
 				else
 				{
-					printf("\nYou don't have enought Mana Potion! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -396,10 +414,11 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 		}
 		else if (pressedKey == '3')
 		{
-			system("cls");
-			printf("\nDo you want to sell your Kebab?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 19, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
+			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -412,7 +431,9 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 				}
 				else
 				{
-					printf("\nYou don't have enought Kebab! Press Enter");
+					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					PrintTradeWindow(TradeWindow);
+					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
 					} while (ans != 13);
@@ -460,9 +481,11 @@ hero Trade(hero Laplas, int seed)
 		else if (pressedKey == '2')
 		{
 			GetTradeSellWindow(TradeWindow);
+			GetTradeComments();
+			GetTradeCommentsPosition(TradeCommentsPosition, TradeWindow);
 			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
-			TradingWithTraderSell(Laplas, Cost, TradeWindow, seed);
+			TradingWithTraderSell(Laplas, Cost, TradeWindow, seed, TradeCommentsPosition);
 			GetTradeMenuWindow(TradeWindow);
 			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
