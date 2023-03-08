@@ -155,6 +155,15 @@
     <Text Include="Trader_Menu.txt" />
     <Text Include="Trader_Sell.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Atack.wav" />
+    <Media Include="Crit.wav" />
+    <Media Include="Fireball.wav" />
+    <Media Include="Fire_rain.wav" />
+    <Media Include="Grom.wav" />
+    <Media Include="main_full.wav" />
+    <Media Include="Wall.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

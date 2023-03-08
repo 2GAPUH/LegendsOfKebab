@@ -264,6 +264,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 			FightCalculation(&Laplas, &Kostyan, pressedKey);
 			BattleCommentsPrint(BattleCommentsPosition, 1,HeroBattleComments);
 			BattleCommentsPrint(BattleCommentsPosition, 1, EnemyBattleComments);
+			PlaySound(L"Atack.wav", NULL,  SND_ASYNC);
 		}
 
 		else if (pressedKey == 'q' || pressedKey == 'Q')
@@ -296,13 +297,25 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 			if (flag != 4)
 			{
 				if (flag == 0 && Laplas.MP >= LIGHTING_ATACK_MANA_COST)
+				{
 					Laplas.MP -= LIGHTING_ATACK_MANA_COST;
+					PlaySound(L"Grom.wav", NULL, SND_ASYNC);
+				}
 				else if (flag == 1 && Laplas.MP >= FIREBALL_MANA_COST)
+				{
 					Laplas.MP -= FIREBALL_MANA_COST;
+					PlaySound(L"Fireball.wav", NULL, SND_ASYNC);
+				}
 				else if (flag == 2 && Laplas.MP >= FIRE_RAIN_MANA_COST)
+				{
 					Laplas.MP -= FIRE_RAIN_MANA_COST;
+					PlaySound(L"Fire_rain.wav", NULL, SND_ASYNC);
+				}
 				else if (flag == 3 && Laplas.MP >= STONE_WALL_MANA_COST)
+				{
 					Laplas.MP -= STONE_WALL_MANA_COST;
+					PlaySound(L"Wall.wav", NULL, SND_ASYNC);
+				}
 				else
 				{
 					PrintBattleWindow(BattleWindow, BattleCommentsPosition);
@@ -323,6 +336,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		else if (pressedKey == 32)
 		{
 			FightCalculation(&Laplas, &Kostyan, pressedKey);
+			PlaySound(L"Crit.wav", NULL, SND_ASYNC);
 		}
 
 		else continue;

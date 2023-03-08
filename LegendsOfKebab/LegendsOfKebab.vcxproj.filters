@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="файлы звука">
+      <UniqueIdentifier>{3deb2d5a-474f-48a9-af87-e74d6b8acb65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -79,5 +82,28 @@
     <Text Include="Events.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="main_full.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Fire_rain.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Fireball.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Grom.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Atack.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Crit.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Wall.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
   </ItemGroup>
 </Project>
