@@ -383,6 +383,7 @@ hero Trade(hero Laplas, int seed)
 			PrintTradeWindow(TradeWindow);
 			TradingWithTraderBuy(Laplas, Cost, TradeWindow, seed);
 			GetTradeMenuWindow(TradeWindow);
+			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
 		}
 		else if (pressedKey == '2')
@@ -392,6 +393,7 @@ hero Trade(hero Laplas, int seed)
 			PrintTradeWindow(TradeWindow);
 			TradingWithTraderSell(Laplas, Cost, TradeWindow, seed);
 			GetTradeMenuWindow(TradeWindow);
+			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
 		}
 		else if (pressedKey == '0')
