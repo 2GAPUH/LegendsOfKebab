@@ -61,6 +61,7 @@ void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 	CorretPosition = 0;
 }
 
+
 void PrintBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 {
 	system("cls");
@@ -245,14 +246,18 @@ int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
 }
 
 
-void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
+
+
+void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char* ChoiceMagic[])
 {
 	char pressedKey;
 	int temp, tempSpel;
-
+	
 
 	do {
 		pressedKey = _getch();
+		int flag = 0;
+
 
 		if (pressedKey == 13)
 		{
@@ -261,21 +266,42 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 			BattleCommentsPrint(BattleCommentsPosition, 1, EnemyBattleComments);
 		}
 
-		else if (pressedKey == 'q' || pressedKey == 'Q' || pressedKey == 137 || pressedKey == 169)
+		else if (pressedKey == 'q' || pressedKey == 'Q')
 		{
+			*ChoiceMagic[flag] = '>';
 			BattleCommentsPrint(BattleCommentsPosition, 1, Events);
 			PrintBattleWindow(BattleWindow, BattleCommentsPosition);
-			pressedKey = _getch();
+			do {
+				
+				pressedKey = _getch();
+
+				if (pressedKey == 'w' && flag != 0)
+				{
+					flag -= 1;
+					*ChoiceMagic[flag] = '>';
+					*ChoiceMagic[flag + 1] = ' ';
+				}
+				if (pressedKey == 's' && flag != 4)
+				{
+					flag += 1;
+					*ChoiceMagic[flag] = '>';
+					*ChoiceMagic[flag - 1] = ' ';
+				}
+				BattleCommentsPrint(BattleCommentsPosition, 1, Events);
+				PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+			} while (pressedKey != 13);
 			
-			if (pressedKey == '1' || pressedKey == '2' || pressedKey == '3' || pressedKey == '4')
+			*ChoiceMagic[flag] = ' ';
+			
+			if (flag != 4)
 			{
-				if (pressedKey == '1' && Laplas.MP >= LIGHTING_ATACK_MANA_COST)
+				if (flag == 0 && Laplas.MP >= LIGHTING_ATACK_MANA_COST)
 					Laplas.MP -= LIGHTING_ATACK_MANA_COST;
-				else if (pressedKey == '2' && Laplas.MP >= FIREBALL_MANA_COST)
+				else if (flag == 1 && Laplas.MP >= FIREBALL_MANA_COST)
 					Laplas.MP -= FIREBALL_MANA_COST;
-				else if (pressedKey == '3' && Laplas.MP >= FIRE_RAIN_MANA_COST)
+				else if (flag == 2 && Laplas.MP >= FIRE_RAIN_MANA_COST)
 					Laplas.MP -= FIRE_RAIN_MANA_COST;
-				else if (pressedKey == '4' && Laplas.MP >= STONE_WALL_MANA_COST)
+				else if (flag == 3 && Laplas.MP >= STONE_WALL_MANA_COST)
 					Laplas.MP -= STONE_WALL_MANA_COST;
 				else
 				{
@@ -285,7 +311,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 				tempSpel = FightCalculation(&Laplas, &Kostyan, pressedKey);
 				//BattleCommentsPrint(BattleCommentsPosition, tempSpel);
 			}
-			else if (pressedKey == '0') 
+			else  
 				PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 		}
 
@@ -319,6 +345,7 @@ hero Battle(hero Laplas, int seed)
 	system("cls");
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 	char* CommentsPosition[BATTLE_COMMENTS_COLUMNS];
+	char* ChoiceMagic[5] = { &BattleWindow[24][44], &BattleWindow[25][44] , &BattleWindow[26][44] , &BattleWindow[27][44], &BattleWindow[28][44] };
 
 	enemy Kostyan = { 121, 17, 3 , 0, 0};
 
@@ -331,7 +358,7 @@ hero Battle(hero Laplas, int seed)
 	PrintBattleWindow(BattleWindow, CommentsPosition);
 
 
-	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition);
+	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition, ChoiceMagic);
 
 
 	system("chcp 1251");
