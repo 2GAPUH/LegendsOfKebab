@@ -9,6 +9,11 @@
 
 #define TRADE_WINDOW_ROWS 30
 #define TRADE_WINDOW_COLUMNS 121
+#define TRADE_COMMENTS_COUNT 30
+#define TRADE_COMMENTS_COLUMNS 365
+char TradeComments[TRADE_COMMENTS_COUNT][TRADE_COMMENTS_COLUMNS];
+int CorretPosition = 0;
+
 
 struct hero
 {
@@ -22,6 +27,62 @@ struct cost
 {
 	int cost1, cost2, cost3, cost4, cost5;
 };
+
+void GetTradeComments()
+{
+	FILE* file;
+	char temp;
+
+	fopen_s(&file, "TradeComments.txt", "r");
+
+	for (int i = 0; i < TRADE_COMMENTS_COUNT; i++)
+		for (int n = 0; n < TRADE_COMMENTS_COLUMNS; n++)
+		{
+			fscanf_s(file, "%c", &temp);
+			TradeComments[i][n] = temp;
+			if (temp == '\n') break;
+
+		}
+
+	fclose(file);
+}
+
+void TradeCommentsClear(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS])
+{
+	for (int i = 0; i < TRADE_COMMENTS_COLUMNS; i++)
+	{
+		*TradeCommentsPosition[i] = 32;
+
+	}
+	CorretPosition = 0;
+}
+
+
+void GetTradeCommentsPosition(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS], char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS])
+{
+	int n = 23, j = 65;
+	for (int i = 0; i < TRADE_COMMENTS_COLUMNS; i++, j++)
+	{
+		if (j == 118)
+		{
+			n++;
+			j = 65;
+		}
+		TradeCommentsPosition[i] = &(TradeWindow[n][j]);
+	}
+
+}
+
+
+void TradeCommentsPrint(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS], int type, char Array[TRADE_COMMENTS_COUNT][TRADE_COMMENTS_COLUMNS])
+{
+	for (int i = 0; CorretPosition < TRADE_COMMENTS_COLUMNS; CorretPosition++, i++)
+	{
+		if (Array[type][i] == '\n') break;
+		*TradeCommentsPosition[CorretPosition] = Array[type][i];
+
+	}
+}
 
 void GetTradeMenuWindow(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS])
 {
@@ -117,10 +178,11 @@ void CheckCostStats(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], c
 	TradeWindow[27][60] = Cost.cost5 % 10 + 48;
 }
 
-void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed)
+void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
 {
 	char pressedKey;
 	char ans;
+	int temp, tempSpel;
 
 	do
 	{
@@ -129,11 +191,16 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 
 		if (pressedKey == 'a' || pressedKey == 'A' || pressedKey == 'ô' || pressedKey == 'Ô')
 		{
-			system("cls");
-			printf("Upgrade Sword - Gives you 30 DMG");
-			printf("\nDo you want to Upgrade Sword?");
-			printf("\n1 - Yes");
-			printf("\n0 - No");
+		//	system("cls");
+		//	printf("Upgrade Sword - Gives you 30 DMG");
+		//	printf("\nDo you want to Upgrade Sword?");
+		//	printf("\n1 - Yes");
+		//	printf("\n0 - No");
+			TradeCommentsPrint(TradeCommentsPosition, 1, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 2, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
+			PrintTradeWindow(TradeWindow);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
@@ -360,9 +427,11 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 	} while (pressedKey != 27);
 }
 
+
 hero Trade(hero Laplas, int seed)
 {
 	char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS];
+	char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS];
 
 	cost Cost = { 600, 50, 50, 500, 150 };
 
@@ -378,10 +447,12 @@ hero Trade(hero Laplas, int seed)
 		if (pressedKey == '1')
 		{
 			GetTradeBuyWindow(TradeWindow);
+			GetTradeComments();
+			GetTradeCommentsPosition(TradeCommentsPosition, TradeWindow);
 			CheckLaplasTradeStats(TradeWindow, Laplas);
 			CheckCostStats(TradeWindow, Cost);
 			PrintTradeWindow(TradeWindow);
-			TradingWithTraderBuy(Laplas, Cost, TradeWindow, seed);
+			TradingWithTraderBuy(Laplas, Cost, TradeWindow, seed, TradeCommentsPosition);
 			GetTradeMenuWindow(TradeWindow);
 			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
