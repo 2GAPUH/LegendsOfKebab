@@ -60,6 +60,9 @@
     <ClCompile Include="Save.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Load.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h">
@@ -96,6 +99,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Dice.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Load.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

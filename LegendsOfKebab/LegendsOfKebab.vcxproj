@@ -135,6 +135,7 @@
     <ClCompile Include="HouseLoc.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="KebabLoc.cpp" />
+    <ClCompile Include="Load.cpp" />
     <ClCompile Include="Save.cpp">
       <SubType>
       </SubType>
@@ -156,6 +157,7 @@
     <ClInclude Include="HouseLoc.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="KebabLoc.h" />
+    <ClInclude Include="Load.h" />
     <ClInclude Include="Save.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Source.h" />

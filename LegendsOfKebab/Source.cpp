@@ -16,6 +16,7 @@
 #include "Trader.h"
 #include "Inventory.h"
 #include "Dice.h"
+#include "Save.h"
 
 
 #pragma comment (lib, "winmm.lib")
@@ -234,6 +235,7 @@ void heroMovement(Hero* hero_char, char map[WINDOW_HEIGHT][WINDOW_WIDTH], hero &
 void goNextLocation(int firstLocation,int currentLocation, int heroEnterCoordX, int heroEnterCoordY, hero Laplas) {
 	if (firstLocation != currentLocation)
 	{
+		save(Laplas, heroEnterCoordX, heroEnterCoordY, currentLocation);
 		switch (currentLocation)
 		{
 		case FIRST_LOCATION:

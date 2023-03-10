@@ -23,6 +23,8 @@ int main()
 
 	hero Laplas = { 200, 65, 30, 5, 760, 250, 100, 0, 0 , 1, 10, 20, 1, 0,0};
 
+
+
 	StartMenu();
 
 	//Kebab(Laplas);
