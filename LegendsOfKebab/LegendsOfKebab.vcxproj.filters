@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="файлы звука">
+      <UniqueIdentifier>{3deb2d5a-474f-48a9-af87-e74d6b8acb65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -30,6 +33,36 @@
     <ClCompile Include="Trader.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="CaveLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="KebabLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Blackjack.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Dice.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Save.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Load.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h">
@@ -42,6 +75,36 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="KebabLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Source.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Save.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Dice.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Load.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackJack.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -64,7 +127,10 @@
     <Text Include="StartMenu.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
-    <Text Include="HeroBattleComments.txt">
+    <Text Include="DescriptionItems.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="ItemsTr.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
     <Text Include="EnemyBattleComments.txt">
@@ -73,5 +139,91 @@
     <Text Include="Events.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="HeroBattleComments.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Items.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="TradeComments.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\balnk.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\cave.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\house.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\kebab_room.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\map.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\shop.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Boss.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="HappyEnd.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="BadEnd.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Atack.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Crit.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Fire_rain.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Fireball.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Grom.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Wall.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main_full.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main_loop.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main_menu_full.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="the_end.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="house.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="fight_scene_loop.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="boss_theme_loop.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="boss_win.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vsls.json" />
   </ItemGroup>
 </Project>

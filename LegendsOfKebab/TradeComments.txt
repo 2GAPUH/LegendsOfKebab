@@ -1,0 +1,26 @@
+Upgrade Sword                                        
+Upgrade Sword - Gives you 30 DMG                     
+Do you want to Upgrade Sword?                        
+1 - Yes                                              
+0 - No                                               
+You don't have enought money! Press Enter            
+Health Potion                                        
+Health Potion - Restores 100 HP                      
+Do you want to buy a Health Potion?                  
+Mana Potion                                          
+Mana Potion - Restores 50 MP                         
+Do you want to buy a Mana Potion?                    
+Upgrade Armor                                        
+Upgrade Armor - Gives you 15 ARM                     
+Do you want to Upgrade Armor?                        
+Kebab                                                
+Kebab - Restores 75 HP and 75 MP                     
+Do you want to buy a Kebab?                          
+Do you want to sell your Health Potion?              
+Do you want to sell your Mana Potion?                
+Do you want to sell your Kebab?                      
+You don't have enought items! Press Enter            
+You can't sell this item! Press Enter                
+You haven't this item! Press Enter                   
+You can't use this item! Press Enter                 
+-
