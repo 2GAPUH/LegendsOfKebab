@@ -15,6 +15,7 @@
 #include "Shop.h"
 #include "Trader.h"
 #include "Inventory.h"
+#include "Dice.h"
 
 
 #pragma comment (lib, "winmm.lib")
@@ -86,7 +87,6 @@ struct EnterNewLocCord
 };
 
 //-----------------------------------
-
 void PrintMap(Hero hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH], Enemy* enemyes, Npc* npcs)
 {
 	system("cls");
@@ -172,14 +172,12 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 
 	if (map[main_char.y][main_char.x] == 'D')
 	{
-		//Dice()
-		system("color 0F");
+		Dice(Laplas);
 	}	
 
 	if (map[main_char.y][main_char.x] == 'B')
 	{
 		//BlackJack()
-		system("color 0F");
 	}
 
 	for (int i = 0; i < sizeof(anLocCor); i++)

@@ -128,11 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Blackjack.cpp" />
     <ClCompile Include="CaveLoc.cpp" />
+    <ClCompile Include="Dice.cpp" />
     <ClCompile Include="FirstLoc.cpp" />
     <ClCompile Include="HouseLoc.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="KebabLoc.cpp" />
+    <ClCompile Include="Save.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Main.cpp">
       <SubType>
       </SubType>
@@ -145,10 +151,12 @@
   <ItemGroup>
     <ClInclude Include="Battle.h" />
     <ClInclude Include="CaveLoc.h" />
+    <ClInclude Include="Dice.h" />
     <ClInclude Include="FirstLoc.h" />
     <ClInclude Include="HouseLoc.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="KebabLoc.h" />
+    <ClInclude Include="Save.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Source.h" />
     <ClInclude Include="StartMenu.h" />
@@ -181,6 +189,7 @@
   <ItemGroup>
     <Media Include="Atack.wav" />
     <Media Include="boss_theme_loop.wav" />
+    <Media Include="boss_win.wav" />
     <Media Include="Crit.wav" />
     <Media Include="fight_scene_loop.wav" />
     <Media Include="Fireball.wav" />
@@ -193,6 +202,9 @@
     <Media Include="main_menu_full.wav" />
     <Media Include="the_end.wav" />
     <Media Include="Wall.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vsls.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

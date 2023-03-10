@@ -399,6 +399,8 @@ void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_R
 
 hero Inventory(hero &Laplas, int seed)
 {
+	system("chcp 866");
+	PlaySound(L"main_loop.wav", NULL, SND_LOOP | SND_ASYNC);
 	char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS];
 	char* InventoryCommentsPosition[INVENTORY_COMMENTS_COLUMNS];
 	char* object_position[OBJ_WINDOW];
@@ -419,5 +421,6 @@ hero Inventory(hero &Laplas, int seed)
 		InventoryObjectPrint(object_position, i);
 	MovingInventory(choice_obj, InventoryWindow, description_position, InventoryCommentsPosition, Laplas);
 
+	system("chcp 1251");
 	return Laplas;
 }

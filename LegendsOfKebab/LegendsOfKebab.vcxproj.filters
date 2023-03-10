@@ -51,6 +51,15 @@
     <ClCompile Include="Shop.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Blackjack.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Dice.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Save.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h">
@@ -81,6 +90,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Shop.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Save.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Dice.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -195,5 +210,11 @@
     <Media Include="boss_theme_loop.wav">
       <Filter>файлы звука</Filter>
     </Media>
+    <Media Include="boss_win.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vsls.json" />
   </ItemGroup>
 </Project>

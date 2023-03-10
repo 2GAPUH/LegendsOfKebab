@@ -25,7 +25,7 @@ int main()
 
 	StartMenu();
 
-	Kebab(Laplas);
+	//Kebab(Laplas);
 	FirstLoc(10, 25, Laplas);
 
 	/*
