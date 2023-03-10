@@ -145,7 +145,10 @@
   <ItemGroup>
     <Text Include="Battle.txt" />
     <Text Include="BattleComments.txt" />
+    <Text Include="DescriptionItems.txt" />
     <Text Include="Inventory.txt" />
+    <Text Include="Items.txt" />
+    <Text Include="ItemsTr.txt" />
     <Text Include="TradeComments.txt" />
     <Text Include="StartMenu.txt" />
     <Text Include="Trader_Buy.txt" />

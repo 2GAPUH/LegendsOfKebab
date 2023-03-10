@@ -19,4 +19,6 @@ Do you want to buy a Kebab?
 Do you want to sell your Health Potion?              
 Do you want to sell your Mana Potion?                
 Do you want to sell your Kebab?                      
+You don't have enought items! Press Enter            
+You can't sell this items! Press Enter               
 -

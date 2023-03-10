@@ -67,5 +67,13 @@
     <Text Include="BattleComments.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Items.txt" />
+    <Text Include="TradeComments.txt" />
+    <Text Include="DescriptionItems.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="ItemsTr.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>

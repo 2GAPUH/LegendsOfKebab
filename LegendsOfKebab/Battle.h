@@ -10,6 +10,7 @@ struct hero
 	int MaxHP, MaxMP;
 	int Resist;
 	int Crit;
+	int Invent[6];
 };
 
 struct enemy

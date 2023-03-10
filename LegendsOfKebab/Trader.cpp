@@ -10,9 +10,21 @@
 #define TRADE_WINDOW_ROWS 30
 #define TRADE_WINDOW_COLUMNS 121
 #define TRADE_COMMENTS_COUNT 30
-#define TRADE_COMMENTS_COLUMNS 270//265
+#define TRADE_COMMENTS_COLUMNS 270
+#define DESC_WINDOW 234
+#define OBJ_WINDOW 165
+#define OBJ_HEIGHT 5
+#define OBJ_WIDTH 15
+#define DESC_HEIGHT 6
+#define DESC_WIDTH 40
+#define COST_WINDOW_ROWS 5
+#define COST_WINDOW_COLUMNS 3
 char TradeComments[TRADE_COMMENTS_COUNT][TRADE_COMMENTS_COLUMNS];
+char descriptionTr[DESC_HEIGHT][DESC_WIDTH];
+char objectsTr[OBJ_HEIGHT][OBJ_WIDTH];
 int CorretPosition = 0;
+int CorPosition0Tr = 0;
+int CorPosition1Tr = 0;
 
 
 struct hero
@@ -21,12 +33,110 @@ struct hero
 	int MaxHP, MaxMP;
 	int Resist;
 	int Crit;
+	int Invent[6];
 };
 
 struct cost
 {
 	int cost1, cost2, cost3, cost4, cost5;
 };
+
+void TradeInventoryClear(char* array[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		*array[i] = 32;
+
+	}
+	CorPosition1Tr = 0;
+	CorPosition0Tr = 0;
+}
+
+
+void TradeGetObjectPosition(char* ar_position[OBJ_WINDOW], char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS])
+{
+	int n = 24, j = 19;
+	for (int i = 0; i < OBJ_WINDOW; i++, j++)
+	{
+		if (j == 33)
+		{
+			n++;
+			j = 19;
+		}
+		ar_position[i] = &(TradeWindow[n][j]);
+	}
+}
+
+void TradeGetDescriptionPosition(char* ar_position[DESC_WINDOW], char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS])
+{
+	int n = 24, j = 66;
+	for (int i = 0; i < DESC_WINDOW; i++, j++)
+	{
+		if (j == 118)
+		{
+			n++;
+			j = 66;
+		}
+		ar_position[i] = &(TradeWindow[n][j]);
+	}
+
+}
+
+
+void TradeGetObjects()
+{
+	FILE* f;
+	if (fopen_s(&f, "ItemsTr.txt", "rt") == 0)
+	{
+		for (int i = 0; i < OBJ_HEIGHT; i++)
+			for (int j = 0; j < OBJ_WIDTH; j++)
+				fscanf_s(f, "%c", &objectsTr[i][j]);
+		fclose(f);
+	}
+	else
+	{
+		printf("Can't load the level!");
+		exit(1);
+	}
+}
+
+void TradeGetDescription()
+{
+	FILE* f;
+	if (fopen_s(&f, "DescriptionItems.txt", "rt") == 0)
+	{
+		for (int i = 0; i < DESC_HEIGHT; i++)
+			for (int j = 0; j < DESC_WIDTH; j++)
+				fscanf_s(f, "%c", &descriptionTr[i][j], 1);
+		fclose(f);
+	}
+	else
+	{
+		printf("Can't load the level!");
+		exit(1);
+	}
+}
+
+
+void TradeInventoryObjectPrint(char* ar_position[OBJ_WINDOW], int type)
+{
+	for (int i = 0; CorPosition0Tr < OBJ_WINDOW; CorPosition0Tr++, i++)
+	{
+		if (objectsTr[type][i] == '\n') break;
+		*ar_position[CorPosition0Tr] = objectsTr[type][i];
+
+	}
+}
+
+void TradeInventoryDescriptionPrint(char* ar_position[DESC_WINDOW], int type)
+{
+	for (int i = 0; CorPosition1Tr < DESC_WINDOW; CorPosition1Tr++, i++)
+	{
+		if (descriptionTr[type][i] == '\n') break;
+		*ar_position[CorPosition1Tr] = descriptionTr[type][i];
+
+	}
+}
 
 void GetTradeComments()
 {
@@ -130,6 +240,7 @@ void PrintTradeWindow(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS])
 	for (int i = 0; i < TRADE_WINDOW_ROWS; i++)
 		for (int n = 0; n < TRADE_WINDOW_COLUMNS; n++)
 			printf_s("%c", TradeWindow[i][n]);
+	
 }
 
 void CheckLaplasTradeStats(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], hero Laplas)
@@ -179,6 +290,39 @@ void CheckCostStats(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], c
 	TradeWindow[27][60] = Cost.cost5 % 10 + 48;
 }
 
+void CheckCostStatsSell(char TradeWindowSell[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], cost Cost)
+{
+	TradeWindowSell[24][49] = Cost.cost2 / 100 + 48;
+	TradeWindowSell[24][50] = Cost.cost2 / 10 % 10 + 48;
+	TradeWindowSell[24][51] = Cost.cost2 % 10 + 48;
+
+	TradeWindowSell[25][49] = Cost.cost3 / 100 + 48;
+	TradeWindowSell[25][50] = Cost.cost3 / 10 % 10 + 48;
+	TradeWindowSell[25][51] = Cost.cost3 % 10 + 48;
+
+	TradeWindowSell[26][49] = Cost.cost5 / 100 + 48;
+	TradeWindowSell[26][50] = Cost.cost5 / 10 % 10 + 48;
+	TradeWindowSell[26][51] = Cost.cost5 % 10 + 48;
+
+}
+
+void TradeCheckCountObjects(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], hero Laplas)
+{
+	TradeWindow[24][34] = Laplas.Invent[0] / 10 % 10 + 48;
+	TradeWindow[24][35] = Laplas.Invent[0] % 10 + 48;
+
+	TradeWindow[25][34] = Laplas.Invent[1] / 10 % 10 + 48;
+	TradeWindow[25][35] = Laplas.Invent[1] % 10 + 48;
+
+	TradeWindow[26][34] = Laplas.Invent[2] / 10 % 10 + 48;
+	TradeWindow[26][35] = Laplas.Invent[2] % 10 + 48;
+
+	TradeWindow[27][35] = Laplas.Invent[3] % 10 + 48;
+
+	TradeWindow[28][34] = Laplas.Invent[4] / 10 % 10 + 48;
+	TradeWindow[28][35] = Laplas.Invent[4] % 10 + 48;
+}
+
 void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
 {
 	char pressedKey;
@@ -203,7 +347,7 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON - Cost.cost1 > 0)
+				if (Laplas.MON - Cost.cost1 > 0 && Laplas.DMG < 90)
 				{
 					Laplas.MON -= Cost.cost1;
 					Laplas.DMG += 30;
@@ -234,7 +378,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON - Cost.cost2 > 0) Laplas.MON -= Cost.cost2;
+				if (Laplas.MON - Cost.cost2 > 0 && Laplas.Invent[0] < 99)
+				{
+					Laplas.MON -= Cost.cost2;
+					Laplas.Invent[0] += 1;
+					TradeCheckCountObjects(TradeWindow, Laplas);
+				}
 				else
 				{
 					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
@@ -261,7 +410,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON - Cost.cost3 > 0) Laplas.MON -= Cost.cost3;
+				if (Laplas.MON - Cost.cost3 > 0)
+				{
+					Laplas.MON -= Cost.cost3;
+					Laplas.Invent[1] += 1;
+					TradeCheckCountObjects(TradeWindow, Laplas);
+				}
 				else
 				{
 					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
@@ -288,7 +442,7 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON - Cost.cost4 > 0)
+				if (Laplas.MON - Cost.cost4 > 0 && Laplas.ARM < 75)
 				{
 					Laplas.MON -= Cost.cost4;
 					Laplas.ARM += 15;
@@ -319,7 +473,12 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON - Cost.cost5 > 0) Laplas.MON -= Cost.cost5;
+				if (Laplas.MON - Cost.cost5 > 0 && Laplas.Invent[2] < 99)
+				{
+					Laplas.MON -= Cost.cost5;
+					Laplas.Invent[2] += 1;
+					TradeCheckCountObjects(TradeWindow, Laplas);
+				}
 				else
 				{
 					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
@@ -341,7 +500,9 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 	} while (pressedKey != 27);
 }
 
-void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
+
+
+void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindowSell[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
 {
 	char pressedKey;
 	char ans;
@@ -356,23 +517,23 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 			TradeCommentsPrint(TradeCommentsPosition, 18, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
-			PrintTradeWindow(TradeWindow);
+			PrintTradeWindow(TradeWindowSell);
 			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON > 0/*товара > 0*/)
+				if (Laplas.Invent[0] > 0)
 				{
-
 					Laplas.MON += Cost.cost2;
-					//товар - 1
+					Laplas.Invent[0] -= 1;
+					TradeCheckCountObjects(TradeWindowSell, Laplas);
 				}
 				else
 				{
-					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
-					PrintTradeWindow(TradeWindow);
+					TradeCommentsPrint(TradeCommentsPosition, 21, TradeComments);
+					PrintTradeWindow(TradeWindowSell);
 					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
@@ -387,22 +548,23 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 			TradeCommentsPrint(TradeCommentsPosition, 19, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
-			PrintTradeWindow(TradeWindow);
+			PrintTradeWindow(TradeWindowSell);
 			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON > 0/*товара > 0*/)
+				if (Laplas.Invent[1] > 0)
 				{
 					Laplas.MON += Cost.cost3;
-					// tovar - 1
+					Laplas.Invent[1] -= 1;
+					TradeCheckCountObjects(TradeWindowSell, Laplas);
 				}
 				else
 				{
-					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
-					PrintTradeWindow(TradeWindow);
+					TradeCommentsPrint(TradeCommentsPosition, 21, TradeComments);
+					PrintTradeWindow(TradeWindowSell);
 					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
@@ -417,22 +579,23 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 			TradeCommentsPrint(TradeCommentsPosition, 19, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
-			PrintTradeWindow(TradeWindow);
+			PrintTradeWindow(TradeWindowSell);
 			TradeCommentsClear(TradeCommentsPosition);
 			do {
 				ans = _getch();
 			} while (ans != '1' && ans != '0');
 			if (ans == '1')
 			{
-				if (Laplas.MON > 0/*tovar > 0*/)
+				if (Laplas.Invent[2] > 0)
 				{
 					Laplas.MON += Cost.cost5;
-					//tovar - 1
+					Laplas.Invent[2] -= 1;
+					TradeCheckCountObjects(TradeWindowSell, Laplas);
 				}
 				else
 				{
-					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
-					PrintTradeWindow(TradeWindow);
+					TradeCommentsPrint(TradeCommentsPosition, 21, TradeComments);
+					PrintTradeWindow(TradeWindowSell);
 					TradeCommentsClear(TradeCommentsPosition);
 					do {
 						ans = _getch();
@@ -442,17 +605,30 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 			else
 				ans = '0';
 		}
+		else if (pressedKey == '4')
+		{
+			TradeCommentsPrint(TradeCommentsPosition, 22, TradeComments);
+			PrintTradeWindow(TradeWindowSell);
+			TradeCommentsClear(TradeCommentsPosition);
+			do {
+				ans = _getch();
+			} while (ans != 13);
+		}
 		else continue;
-		CheckLaplasTradeStats(TradeWindow, Laplas);
-		PrintTradeWindow(TradeWindow);
+		CheckLaplasTradeStats(TradeWindowSell, Laplas);
+		PrintTradeWindow(TradeWindowSell);
 	} while (pressedKey != 27);
 }
+
 
 
 hero Trade(hero Laplas, int seed)
 {
 	char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS];
+	char TradeWindowSell[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS];
 	char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS];
+	char* object_position[OBJ_WINDOW];
+	char* description_position[DESC_WINDOW];
 
 	cost Cost = { 600, 50, 50, 500, 150 };
 
@@ -470,28 +646,45 @@ hero Trade(hero Laplas, int seed)
 			GetTradeBuyWindow(TradeWindow);
 			GetTradeComments();
 			GetTradeCommentsPosition(TradeCommentsPosition, TradeWindow);
+			TradeGetObjectPosition(object_position, TradeWindow);
+			TradeGetDescriptionPosition(description_position, TradeWindow);
+			TradeGetObjects();
+			TradeGetDescription();
 			CheckLaplasTradeStats(TradeWindow, Laplas);
 			CheckCostStats(TradeWindow, Cost);
+			TradeCheckCountObjects(TradeWindow, Laplas);
+			for (int i = 0; i < 5; i++)
+				TradeInventoryObjectPrint(object_position, i);
 			PrintTradeWindow(TradeWindow);
 			TradingWithTraderBuy(Laplas, Cost, TradeWindow, seed, TradeCommentsPosition);
 			GetTradeMenuWindow(TradeWindow);
 			CheckLaplasTradeStats(TradeWindow, Laplas);
 			PrintTradeWindow(TradeWindow);
+			TradeInventoryClear(description_position, DESC_WINDOW);
 		}
 		else if (pressedKey == '2')
 		{
-			GetTradeSellWindow(TradeWindow);
+			GetTradeSellWindow(TradeWindowSell);
 			GetTradeComments();
-			GetTradeCommentsPosition(TradeCommentsPosition, TradeWindow);
-			CheckLaplasTradeStats(TradeWindow, Laplas);
-			PrintTradeWindow(TradeWindow);
-			TradingWithTraderSell(Laplas, Cost, TradeWindow, seed, TradeCommentsPosition);
-			GetTradeMenuWindow(TradeWindow);
-			CheckLaplasTradeStats(TradeWindow, Laplas);
-			PrintTradeWindow(TradeWindow);
+			GetTradeCommentsPosition(TradeCommentsPosition, TradeWindowSell);
+			TradeGetObjectPosition(object_position, TradeWindowSell);
+			TradeGetDescriptionPosition(description_position, TradeWindowSell);
+			TradeGetObjects();
+			TradeGetDescription();
+			CheckLaplasTradeStats(TradeWindowSell, Laplas);
+			CheckCostStatsSell(TradeWindowSell, Cost);
+			TradeCheckCountObjects(TradeWindowSell, Laplas);
+			for (int i = 0; i < 5; i++)
+				TradeInventoryObjectPrint(object_position, i);
+			PrintTradeWindow(TradeWindowSell);
+			TradingWithTraderSell(Laplas, Cost, TradeWindowSell, seed, TradeCommentsPosition);
+			GetTradeMenuWindow(TradeWindowSell);
+			CheckLaplasTradeStats(TradeWindowSell, Laplas);
+			PrintTradeWindow(TradeWindowSell);
+			TradeInventoryClear(description_position, DESC_WINDOW);
 		}
 		else if (pressedKey == '0')
-			exit(1);
+			return Laplas;
 	} while (pressedKey != '0');
 
 	return Laplas;
