@@ -1,3 +1,4 @@
+#pragma once
 #include "Source.h"
 
 //---entity count--
@@ -11,7 +12,7 @@ void House(hero Laplas) {
 	char locations[5][20] = { "maps/map.txt","maps/house.txt", "maps/cave.txt", "maps/shop.txt", "maps/kebab_room.txt" };
 	int startLocation = HOUSE;
 	int currentLocation = HOUSE;
-	PlaySound(L"main_full.wav", NULL, SND_LOOP | SND_ASYNC);
+	PlaySound(L"house.wav", NULL, SND_LOOP | SND_ASYNC);
 	AnLocCord LocAnCor[1] = { { 59, 20, 12 , 13, FIRST_LOCATION}};
 	char map[WINDOW_HEIGHT][WINDOW_WIDTH];
 

@@ -145,6 +145,12 @@
     <Text Include="Boss.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="HappyEnd.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="BadEnd.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Atack.wav">
@@ -184,6 +190,9 @@
       <Filter>файлы звука</Filter>
     </Media>
     <Media Include="fight_scene_loop.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="boss_theme_loop.wav">
       <Filter>файлы звука</Filter>
     </Media>
   </ItemGroup>

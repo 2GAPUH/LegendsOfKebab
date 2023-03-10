@@ -1,3 +1,4 @@
+#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,6 +7,7 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
+
 
 #define INVENTORY_WINDOW_ROWS 29
 #define INVENTORY_WINDOW_COLUMNS 120
@@ -297,7 +299,17 @@ void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_R
 	{
 		do {
 			btn = _getch();
-		} while (btn != 's' && btn != 'w' && btn != 'S' && btn != 'W' && btn != 13 && btn != 9);
+		} while (btn != 's' && btn != 'w' && btn != 'S' && btn != 'W' && btn != 13 && btn != 9 && btn != '=');
+
+		if (btn == '=')
+		{
+			if (_getch() == 'k')
+				if (_getch() == 'e')
+					if (_getch() == 'b')
+						if (_getch() == 'a')
+							if (_getch() == 'b')
+								Laplas.MON = 9999;
+		}
 
 		if ((btn == 'w' || btn == 'W') && flag != 0)
 		{

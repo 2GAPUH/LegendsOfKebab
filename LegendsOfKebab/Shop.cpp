@@ -1,3 +1,4 @@
+#pragma once
 #include "Source.h"
 #include "Battle.h"
 
@@ -11,7 +12,7 @@ void Shop(hero Laplas) {
 	char locations[5][20] = { "maps/map.txt","maps/house.txt", "maps/cave.txt", "maps/kebab_room.txt", "maps/shop.txt" };
 	int startLocation = SHOP;
 	int currentLocation = SHOP;
-	PlaySound(L"main_full.wav", NULL, SND_LOOP | SND_ASYNC);
+	PlaySound(L"house.wav", NULL, SND_LOOP | SND_ASYNC);
 	AnLocCord locAnCor[1] = { { 59,20, 107, 8, CAVE} };
 	char map[WINDOW_HEIGHT][WINDOW_WIDTH];
 	Npc npcs[NPC_SL] = { {59,15} };
