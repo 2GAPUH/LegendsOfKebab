@@ -82,6 +82,14 @@
     <Text Include="Events.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Items.txt" />
+    <Text Include="TradeComments.txt" />
+    <Text Include="DescriptionItems.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="ItemsTr.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="main_full.wav">

@@ -16,6 +16,7 @@
 #define FIRE_RAIN_MANA_COST 20
 #define STONE_WALL_MANA_COST 40
 
+char BattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 
 char HeroBattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 char EnemyBattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
@@ -30,7 +31,7 @@ struct enemy
 
 struct hero
 {
-	int HP, MP, DMG, ARM;
+	int HP, MP, DMG, ARM, MON;
 	int MaxHP, MaxMP;
 	int Resist;
 	int Crit;
@@ -44,7 +45,7 @@ void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 
 	fopen_s(&f, "Battle.txt", "r");
 
-	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
+	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
 		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
 			fscanf_s(f, "%c", &BattleWindow[i][n]);
 
@@ -65,8 +66,8 @@ void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 void PrintBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 {
 	system("cls");
-	for (int i = 0; i < BATTLE_WINDOW_ROWS;i++)
-		for(int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
+	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
+		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
 			printf_s("%c", BattleWindow[i][n]);
 	BattleCommentsClear(BattleCommentsPosition);
 }
@@ -102,7 +103,7 @@ void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 
 
 }
-
+/*
 hero UseHealthPotion(hero Laplas)
 {
 	int HealthPotion = 50;
@@ -110,6 +111,7 @@ hero UseHealthPotion(hero Laplas)
 	if (Laplas.HP > Laplas.MaxHP) Laplas.HP = Laplas.MaxHP;
 	return Laplas;
 }
+*/
 
 void GetBattleComments()
 {
@@ -118,7 +120,7 @@ void GetBattleComments()
 
 	fopen_s(&file, "HeroBattleComments.txt", "r");
 
-	for (int i = 0; i < BATTLE_COMMENTS_COUNT;i++)
+	for (int i = 0; i < BATTLE_COMMENTS_COUNT; i++)
 		for (int n = 0; n < BATTLE_COMMENTS_COLUMNS; n++)
 		{
 			fscanf_s(file, "%c", &temp);
@@ -165,7 +167,7 @@ void GetBattleComments()
 void GetBattleCommentsPosition(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
 {
 	int n = 24, j = 45;
-	for (int i = 0;i < BATTLE_COMMENTS_COLUMNS; i++, j++)
+	for (int i = 0; i < BATTLE_COMMENTS_COLUMNS; i++, j++)
 	{
 		if (j == 118)
 		{
@@ -187,7 +189,7 @@ void BattleCommentsPrint(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], 
 	}
 }
 
-int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
+int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey)
 {
 	//Горение
 	if (Kostyan->Burning > 0)
@@ -204,7 +206,7 @@ int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
 		Laplas->Resist = 1;
 	}
 	//Спэл молнии
-	if(pressedKey == '1')
+	if (pressedKey == '1')
 	{
 		Kostyan->Stun = 1;
 		return 0;
@@ -239,8 +241,8 @@ int FightCalculation(hero *Laplas, enemy *Kostyan, char pressedKey)
 	if (Laplas->Crit > 0)
 	{
 		Laplas->Crit -= 1;
-		if (rand() % 2  == 0 && Laplas->DMG > Kostyan->ARM)
-			Kostyan->HP -= (Laplas->DMG - Kostyan->ARM)* 2;
+		if (rand() % 2 == 0 && Laplas->DMG > Kostyan->ARM)
+			Kostyan->HP -= (Laplas->DMG - Kostyan->ARM) * 2;
 	}
 
 }
@@ -340,13 +342,13 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		}
 
 		else continue;
-		
+
 		if (Kostyan.HP < 1) Kostyan.HP = 0;
 
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
-	}while(Laplas.HP > 0 && Kostyan.HP > 0);
+	} while (Laplas.HP > 0 && Kostyan.HP > 0);
 
 }
 
@@ -361,13 +363,13 @@ hero Battle(hero Laplas, int seed)
 	char* CommentsPosition[BATTLE_COMMENTS_COLUMNS];
 	char* ChoiceMagic[5] = { &BattleWindow[24][44], &BattleWindow[25][44] , &BattleWindow[26][44] , &BattleWindow[27][44], &BattleWindow[28][44] };
 
-	enemy Kostyan = { 121, 17, 3 , 0, 0};
+	enemy Kostyan = { 121, 17, 3 , 0, 0 };
 
 	GetBattleWindow(BattleWindow);
 	GetBattleComments();
 	GetBattleCommentsPosition(CommentsPosition, BattleWindow);
 
-	CheckLaplasStats(BattleWindow,Laplas);
+	CheckLaplasStats(BattleWindow, Laplas);
 	CheckEnemyStats(BattleWindow, Kostyan);
 	PrintBattleWindow(BattleWindow, CommentsPosition);
 

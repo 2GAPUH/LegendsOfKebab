@@ -133,36 +133,27 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Map.cpp" />
     <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="Trader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Map.h" />
     <ClInclude Include="StartMenu.h" />
     <ClInclude Include="Trader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
-    <Text Include="Events.txt" />
-    <Text Include="HeroBattleComments.txt" />
-    <Text Include="EnemyBattleComments.txt" />
+    <Text Include="BattleComments.txt" />
+    <Text Include="DescriptionItems.txt" />
     <Text Include="Inventory.txt" />
+    <Text Include="Items.txt" />
+    <Text Include="ItemsTr.txt" />
+    <Text Include="TradeComments.txt" />
     <Text Include="StartMenu.txt" />
     <Text Include="Trader_Buy.txt" />
     <Text Include="Trader_Menu.txt" />
     <Text Include="Trader_Sell.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Atack.wav" />
-    <Media Include="Crit.wav" />
-    <Media Include="Fireball.wav" />
-    <Media Include="Fire_rain.wav" />
-    <Media Include="Grom.wav" />
-    <Media Include="main_full.wav" />
-    <Media Include="Wall.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
