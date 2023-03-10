@@ -1320,6 +1320,7 @@ int BlackJack(hero &Laplas) {
 				if (IgrokCard == 4) {
 					BlackjackCards4(Igrok);
 					_getch();
+
 				}
 				if (Igrok > 10)
 					Igrok = 10;
