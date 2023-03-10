@@ -5,9 +5,8 @@
 #include <time.h>
 #include <Windows.h>
 #include "StartMenu.h"
-#include "Trader.h"
 #include "FirstLoc.h"
-#include "Battle.h"
+#include "Inventory.h"
 
 
 int main()

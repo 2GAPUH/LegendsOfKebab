@@ -9,7 +9,7 @@
 #define OBJ_WIDTH 27
 #define DESC_HEIGHT 6
 #define DESC_WIDTH 40
-#include "Battle.h"
+#include "Inventory.h"
 
 struct cost
 {

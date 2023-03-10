@@ -6,7 +6,6 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
-#include "Battle.h"
 
 #define INVENTORY_WINDOW_ROWS 29
 #define INVENTORY_WINDOW_COLUMNS 120
@@ -28,7 +27,14 @@ int CorretPosition = 0;
 int CorPosition0 = 0;
 int CorPosition1 = 0;
 
-
+struct hero
+{
+	int HP, MP, DMG, ARM, MON;
+	int MaxHP, MaxMP;
+	int Resist;
+	int Crit;
+	int Invent[6];
+};
 
 struct cost
 {

@@ -1,5 +1,4 @@
 #pragma once
-#include "Battle.h"
 #define INVENTORY_WINDOW_ROWS 29
 #define INVENTORY_WINDOW_COLUMNS 120
 #define INVENTORY_COMMENTS_COLUMNS 270
@@ -12,6 +11,14 @@
 #define HealthPotion 100
 #define ManaPotion 50
 
+struct hero
+{
+	int HP, MP, DMG, ARM, MON;
+	int MaxHP, MaxMP;
+	int Resist;
+	int Crit;
+	int Invent[6];
+};
 
 hero UseManaPotion(hero Laplas);
 hero UseKebab(hero Laplas);

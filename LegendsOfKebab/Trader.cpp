@@ -6,7 +6,7 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
-#include "Battle.h"
+#include "Inventory.h"
 
 #define TRADE_WINDOW_ROWS 30
 #define TRADE_WINDOW_COLUMNS 121

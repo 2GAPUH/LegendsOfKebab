@@ -5,6 +5,7 @@
 #include <time.h>
 #include <conio.h>
 #include <windows.h>
+#include "Inventory.h"
 #define BATTLE_WINDOW_ROWS 30
 #define BATTLE_WINDOW_COLUMNS 121
 #define BATTLE_COMMENTS_COUNT 30
@@ -28,17 +29,6 @@ struct enemy
 	int HP, DMG, ARM;
 	int Stun, Burning;
 };
-
-struct hero
-{
-	int HP, MP, DMG, ARM, MON;
-	int MaxHP, MaxMP;
-	int Resist;
-	int Crit;
-	int Invent[6];
-};
-
-
 
 void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
 {
@@ -329,6 +319,11 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		{
 			FightCalculation(&Laplas, &Kostyan, pressedKey);
 			PlaySound(L"Crit.wav", NULL, SND_ASYNC);
+		}
+
+		else if (pressedKey == 'e')
+		{
+			Inventory(Laplas, seed);
 		}
 
 		else continue;

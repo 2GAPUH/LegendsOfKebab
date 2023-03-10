@@ -1,19 +1,10 @@
 #pragma once
-
+#include "Inventory.h"
 #define BATTLE_WINDOW_ROWS 30
 #define BATTLE_WINDOW_COLUMNS 121
 #define BATTLE_COMMENTS_COUNT 30
 #define BATTLE_COMMENTS_COLUMNS 365
 
-
-struct hero
-{
-	int HP, MP, DMG, ARM, MON;
-	int MaxHP, MaxMP;
-	int Resist;
-	int Crit;
-	int Invent[6];
-};
 
 struct enemy
 {
