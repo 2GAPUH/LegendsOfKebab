@@ -155,11 +155,13 @@
     <ClInclude Include="Trader.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="BadEnd.txt" />
     <Text Include="Battle.txt" />
     <Text Include="Boss.txt" />
     <Text Include="DescriptionItems.txt" />
     <Text Include="EnemyBattleComments.txt" />
     <Text Include="Events.txt" />
+    <Text Include="HappyEnd.txt" />
     <Text Include="HeroBattleComments.txt" />
     <Text Include="Inventory.txt" />
     <Text Include="Items.txt" />
@@ -178,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Atack.wav" />
+    <Media Include="boss_theme_loop.wav" />
     <Media Include="Crit.wav" />
     <Media Include="fight_scene_loop.wav" />
     <Media Include="Fireball.wav" />

@@ -1,3 +1,4 @@
+#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +8,9 @@
 #include "StartMenu.h"
 #include "Trader.h"
 #include "FirstLoc.h"
-#include "Battle.h"
+#include "Inventory.h"
+#include "KebabLoc.h"
+
 
 
 int main()
@@ -23,8 +26,7 @@ int main()
 
 	StartMenu();
 
-	
-
+	Kebab(Laplas);
 	FirstLoc(10, 25, Laplas);
 
 	/*

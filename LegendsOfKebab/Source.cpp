@@ -1,3 +1,4 @@
+#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -147,7 +148,7 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 			if (main_char.x == enemyes[i].x && main_char.y == enemyes[i].y)
 			{
 				enemyes[i].x = -1;
-				Laplas = Battle(Laplas, 10);
+				Laplas = Battle(Laplas, 10, 0);
 
 			}
 		}
@@ -165,7 +166,7 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 
 	if ((curLoc == KEBAB_ROOM) && (main_char.x == 70 && main_char.y == 17))
 	{
-		//final battle
+		Laplas = Battle(Laplas, 10, 1);
 		
 	}
 

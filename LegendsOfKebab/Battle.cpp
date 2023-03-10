@@ -40,11 +40,18 @@ struct hero
 
 
 
-void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
+void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int mob)
 {
 	FILE* f;
 
-	fopen_s(&f, "Battle.txt", "r");
+	if (mob == 1)
+		fopen_s(&f, "Boss.txt", "r");
+		
+	else if(mob == 0)
+		fopen_s(&f, "Battle.txt", "r");
+
+	else
+		fopen_s(&f, "BadEnd.txt", "r");
 
 	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
 		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
@@ -243,14 +250,17 @@ int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey)
 
 
 
-hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char* ChoiceMagic[])
+hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char* ChoiceMagic[], int mob)
 {
 	char pressedKey;
 	int temp, tempSpel;
 	
 
 	do {
-		PlaySound(L"fight_scene_loop.wav", NULL, SND_LOOP | SND_ASYNC);
+		if (mob == 0)
+			PlaySound(L"fight_scene_loop.wav", NULL, SND_LOOP | SND_ASYNC);
+		else
+			PlaySound(L"boss_theme_loop.wav", NULL, SND_LOOP | SND_ASYNC);
 		pressedKey = _getch();
 		int flag = 0;
 
@@ -342,8 +352,20 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 	if (Laplas.HP <= 0)
 	{
-		printf_s("End of game");
-			exit(1);
+		PlaySound(L"the_end.wav", NULL,  SND_ASYNC);
+		GetBattleWindow(BattleWindow, 2);
+		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+		pressedKey = _getch();
+		exit(1);
+	}
+
+	if (Kostyan.HP <= 0 && mob == 1)
+	{
+		PlaySound(L"the_end.wav", NULL, SND_ASYNC);
+		GetBattleWindow(BattleWindow, 2);
+		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+		pressedKey = _getch();
+		exit(1);
 	}
 
 	return Laplas;
@@ -352,18 +374,25 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 
 
-hero Battle(hero Laplas, int seed)
+hero Battle(hero Laplas, int seed, int mob)
 {
+	enemy Kostyan = { 121, 17, 3 , 0, 0 };
 	system("chcp 866");
 	system("cls");
-	PlaySound(L"fight_scene_loop.wav", NULL, SND_LOOP | SND_ASYNC);
+	if(mob == 0)
+		PlaySound(L"fight_scene_loop.wav", NULL, SND_LOOP | SND_ASYNC);
+	else
+		PlaySound(L"boss_theme_loop.wav", NULL, SND_LOOP | SND_ASYNC);
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 	char* CommentsPosition[BATTLE_COMMENTS_COLUMNS];
 	char* ChoiceMagic[5] = { &BattleWindow[24][44], &BattleWindow[25][44] , &BattleWindow[26][44] , &BattleWindow[27][44], &BattleWindow[28][44] };
 
-	enemy Kostyan = { 121, 17, 3 , 0, 0 };
+	if(mob == 0)
+		Kostyan = { 121, 17, 3 , 0, 0 };
+	if (mob == 1)
+		Kostyan = { 300, 25, 10 , 0, 0 };
 
-	GetBattleWindow(BattleWindow);
+	GetBattleWindow(BattleWindow, mob);
 	GetBattleComments();
 	GetBattleCommentsPosition(CommentsPosition, BattleWindow);
 
@@ -372,7 +401,7 @@ hero Battle(hero Laplas, int seed)
 	PrintBattleWindow(BattleWindow, CommentsPosition);
 
 
-	Laplas = FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition, ChoiceMagic);
+	Laplas = FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition, ChoiceMagic, mob);
 
 
 	system("chcp 1251");
