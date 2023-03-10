@@ -142,6 +142,9 @@
     <Text Include="maps\shop.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Boss.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Atack.wav">

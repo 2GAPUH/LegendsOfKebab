@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
+    <Text Include="Boss.txt" />
     <Text Include="DescriptionItems.txt" />
     <Text Include="EnemyBattleComments.txt" />
     <Text Include="Events.txt" />
