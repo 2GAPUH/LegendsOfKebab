@@ -13,6 +13,7 @@
 #include "Battle.h"
 #include "Shop.h"
 #include "Trader.h"
+#include "Inventory.h"
 
 
 #pragma comment (lib, "winmm.lib")
@@ -139,7 +140,7 @@ void GetMapFromFile(const char* filename, char map[WINDOW_HEIGHT][WINDOW_WIDTH])
 	fclose(f);
 }
 
-void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCor, int &curLoc, hero &Laplas) {
+void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCor, int &curLoc, hero &Laplas, char map[WINDOW_HEIGHT][WINDOW_WIDTH]) {
 	if (enemyes != NULL) {
 		for (int i = 0; i < sizeof(enemyes); i++)
 		{
@@ -161,12 +162,25 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 			}
 		}
 	}
+
 	if ((curLoc == KEBAB_ROOM) && (main_char.x == 70 && main_char.y == 17))
 	{
 		//final battle
+		
 	}
-	
-	
+
+	if (map[main_char.y][main_char.x] == 'D')
+	{
+		//Dice()
+		system("color 0F");
+	}	
+
+	if (map[main_char.y][main_char.x] == 'B')
+	{
+		//BlackJack()
+		system("color 0F");
+	}
+
 	for (int i = 0; i < sizeof(anLocCor); i++)
 	{
 		if (main_char.x == anLocCor[i].x && main_char.y == anLocCor[i].y)
@@ -178,34 +192,43 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 	}
 }
 
-void heroMovement(Hero* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]) {
+void heroMovement(Hero* hero_char, char map[WINDOW_HEIGHT][WINDOW_WIDTH], hero &Laplas) {
 	char inputButton = _getch();
+	while (inputButton != 'w' && inputButton != 'a' && inputButton != 's' && inputButton != 'd' && inputButton != 9)
+	{
+		inputButton = _getch();
+	}
 	switch (inputButton)
 	{
 	case 'w':
-		if (map[(hero->y) - 1][hero->x] != '#')
+		if (map[(hero_char->y) - 1][hero_char->x] != '#')
 		{
-			hero->y--;
+			hero_char->y--;
 		}
 		break;
 	case 'a':
-		if (map[hero->y][(hero->x) - 1] != '#')
+		if (map[hero_char->y][(hero_char->x) - 1] != '#')
 		{
-			hero->x--;
+			hero_char->x--;
 		}
 		break;
 	case 's':
-		if (map[(hero->y) + 1][hero->x] != '#')
+		if (map[(hero_char->y) + 1][hero_char->x] != '#')
 		{
-			hero->y++;
+			hero_char->y++;
 		}
 		break;
 	case 'd':
-		if (map[hero->y][(hero->x) + 1] != '#')
+		if (map[hero_char->y][(hero_char->x) + 1] != '#')
 		{
-			hero->x++;
+			hero_char->x++;
 		}
 		break;
+	case 9:
+		Inventory(Laplas, 10);
+		break;
+
+
 	}
 }
 

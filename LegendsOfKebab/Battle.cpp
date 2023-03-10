@@ -35,6 +35,7 @@ struct hero
 	int MaxHP, MaxMP;
 	int Resist;
 	int Crit;
+	int Invent[6];
 };
 
 
@@ -103,15 +104,7 @@ void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 
 
 }
-/*
-hero UseHealthPotion(hero Laplas)
-{
-	int HealthPotion = 50;
-	Laplas.HP += 50;
-	if (Laplas.HP > Laplas.MaxHP) Laplas.HP = Laplas.MaxHP;
-	return Laplas;
-}
-*/
+
 
 void GetBattleComments()
 {
@@ -257,6 +250,7 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 	
 
 	do {
+		PlaySound(L"fight_scene_loop.wav", NULL, SND_LOOP | SND_ASYNC);
 		pressedKey = _getch();
 		int flag = 0;
 
@@ -330,10 +324,6 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 				PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 		}
 
-		else if (pressedKey == 'e' || pressedKey == 'E')
-		{
-			FightCalculation(&Laplas, &Kostyan, pressedKey);
-		}
 
 		else if (pressedKey == 32)
 		{
@@ -350,6 +340,12 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 	} while (Laplas.HP > 0 && Kostyan.HP > 0);
 
+	if (Laplas.HP <= 0)
+	{
+		printf_s("End of game");
+			exit(1);
+	}
+
 	return Laplas;
 }
 
@@ -360,6 +356,7 @@ hero Battle(hero Laplas, int seed)
 {
 	system("chcp 866");
 	system("cls");
+	PlaySound(L"fight_scene_loop.wav", NULL, SND_LOOP | SND_ASYNC);
 	char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS];
 	char* CommentsPosition[BATTLE_COMMENTS_COLUMNS];
 	char* ChoiceMagic[5] = { &BattleWindow[24][44], &BattleWindow[25][44] , &BattleWindow[26][44] , &BattleWindow[27][44], &BattleWindow[28][44] };

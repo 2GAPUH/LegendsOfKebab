@@ -6,6 +6,7 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
+#include "Battle.h"
 
 #define INVENTORY_WINDOW_ROWS 29
 #define INVENTORY_WINDOW_COLUMNS 120
@@ -27,14 +28,7 @@ int CorretPosition = 0;
 int CorPosition0 = 0;
 int CorPosition1 = 0;
 
-struct hero
-{
-	int HP, MP, DMG, ARM, MON;
-	int MaxHP, MaxMP;
-	int Resist;
-	int Crit;
-	int Invent[6];
-};
+
 
 struct cost
 {
@@ -285,7 +279,7 @@ void CheckCountObjects(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WIN
 
 }
 
-void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], char* description_position[DESC_WINDOW], char* InventoryCommentsPosition[INVENTORY_WINDOW_ROWS], hero Laplas) {
+void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], char* description_position[DESC_WINDOW], char* InventoryCommentsPosition[INVENTORY_WINDOW_ROWS], hero &Laplas) {
 	char btn =0;
 	int flag = 0;
 	*choice_obj[flag] = '>';
@@ -385,7 +379,7 @@ void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_R
 
 
 
-hero Inventory(hero Laplas, int seed)
+hero Inventory(hero &Laplas, int seed)
 {
 	char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS];
 	char* InventoryCommentsPosition[INVENTORY_COMMENTS_COLUMNS];

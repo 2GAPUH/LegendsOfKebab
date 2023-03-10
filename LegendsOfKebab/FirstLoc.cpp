@@ -27,8 +27,8 @@ void FirstLoc(int heroX, int heroY, hero Laplas) {
 	{
 		GetMapFromFile(locations[currentLocation], map);
 		PrintMap(hero, map, enemyes, NULL);
-		heroMovement(&hero, map);
-		heroColision(hero, enemyes, NULL, LocAnCor, currentLocation, Laplas);
+		heroMovement(&hero, map, Laplas);
+		heroColision(hero, enemyes, NULL, LocAnCor, currentLocation, Laplas,map);
 		goNextLocation(startLocation,currentLocation, LocAnCor[currentLocation-1].heroX, LocAnCor[currentLocation - 1].heroY, Laplas);
 	}
 }

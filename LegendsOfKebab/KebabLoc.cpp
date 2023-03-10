@@ -21,8 +21,8 @@ void Kebab(hero Laplas) {
 	{
 		GetMapFromFile(locations[currentLocation], map);
 		PrintMap(hero, map, NULL, NULL);
-		heroMovement(&hero, map);
-		heroColision(hero, NULL, NULL, locAnCor, currentLocation, Laplas);
+		heroMovement(&hero, map, Laplas);
+		heroColision(hero, NULL, NULL, locAnCor, currentLocation, Laplas, map);
 		goNextLocation(startLocation, currentLocation, locAnCor[0].heroX, locAnCor[0].heroY, Laplas);
 	}
 }

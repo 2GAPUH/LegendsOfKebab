@@ -178,13 +178,16 @@
   <ItemGroup>
     <Media Include="Atack.wav" />
     <Media Include="Crit.wav" />
+    <Media Include="fight_scene_loop.wav" />
     <Media Include="Fireball.wav" />
     <Media Include="Fire_rain.wav" />
     <Media Include="Grom.wav" />
+    <Media Include="house.wav" />
     <Media Include="main.wav" />
     <Media Include="main_full.wav" />
     <Media Include="main_loop.wav" />
     <Media Include="main_menu_full.wav" />
+    <Media Include="the_end.wav" />
     <Media Include="Wall.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

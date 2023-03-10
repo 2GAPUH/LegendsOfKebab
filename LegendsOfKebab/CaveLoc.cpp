@@ -44,8 +44,8 @@ void CaveLoc(int heroX, int heroY, hero Laplas) {
 	{
 		GetMapFromFile(locations[currentLocation], map);
 		PrintMap(hero, map, enemyes, NULL);
-		heroMovement(&hero, map);
-		heroColision(hero, enemyes, NULL, LocAnCor, currentLocation, Laplas);
+		heroMovement(&hero, map, Laplas);
+		heroColision(hero, enemyes, NULL, LocAnCor, currentLocation, Laplas, map);
 		goNextLocation(startLocation, currentLocation, LocAnCor[nextHeroPos(currentLocation,startLocation)].heroX, LocAnCor[nextHeroPos(currentLocation, startLocation)].heroY, Laplas);
 	}
 }

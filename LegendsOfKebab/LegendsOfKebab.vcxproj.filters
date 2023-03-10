@@ -174,5 +174,14 @@
     <Media Include="main_menu_full.wav">
       <Filter>файлы звука</Filter>
     </Media>
+    <Media Include="the_end.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="house.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="fight_scene_loop.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
   </ItemGroup>
 </Project>

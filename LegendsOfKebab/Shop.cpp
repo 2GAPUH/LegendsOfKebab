@@ -23,9 +23,9 @@ void Shop(hero Laplas) {
 	{
 		GetMapFromFile(locations[currentLocation], map);
 		PrintMap(hero, map, NULL, npcs);
-		heroMovement(&hero, map);
+		heroMovement(&hero, map, Laplas);
 		goNextLocation(startLocation, currentLocation, 12, 13, Laplas);
-		heroColision(hero, NULL, npcs, locAnCor, currentLocation, Laplas);
+		heroColision(hero, NULL, npcs, locAnCor, currentLocation, Laplas, map);
 		goNextLocation(startLocation, currentLocation, locAnCor[0].heroX, locAnCor[0].heroY, Laplas);
 	}
 }

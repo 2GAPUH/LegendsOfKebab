@@ -67,6 +67,6 @@ struct AnLocCord //another locations coordinates
 
 void PrintMap(Hero hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH], Enemy* enemyes, Npc* npcs);
 void GetMapFromFile(const char* filename, char map[WINDOW_HEIGHT][WINDOW_WIDTH]);
-void heroColision(Hero& main_char, Enemy* enemyes, Npc* npcs, AnLocCord* flLocAnCor, int& curLoc, hero &Laplas);
-void heroMovement(Hero* hero, char map[WINDOW_HEIGHT][WINDOW_WIDTH]);
+void heroColision(Hero& main_char, Enemy* enemyes, Npc* npcs, AnLocCord* flLocAnCor, int& curLoc, hero &Laplas, char map[WINDOW_HEIGHT][WINDOW_WIDTH]);
+void heroMovement(Hero* hero_char, char map[WINDOW_HEIGHT][WINDOW_WIDTH], hero &Laplas);
 void goNextLocation(int firstLocation, int currentLocation, int heroEnterCoordX, int heroEnterCoordY, hero Laplas);

@@ -4,12 +4,10 @@
 #include <math.h>
 #include <time.h>
 #include <Windows.h>
-#include "Battle.h"
 #include "StartMenu.h"
 #include "Trader.h"
-#include "Inventory.h"
 #include "FirstLoc.h"
-#include "CaveLoc.h"
+#include "Battle.h"
 
 
 int main()
@@ -25,9 +23,9 @@ int main()
 
 	StartMenu();
 
-	CaveLoc(107, 8, Laplas);
+	
 
-	//FirstLoc(10, 25, Laplas);
+	FirstLoc(10, 25, Laplas);
 
 	/*
 	do {

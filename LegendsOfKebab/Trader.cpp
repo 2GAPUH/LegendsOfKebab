@@ -6,6 +6,7 @@
 #include <math.h>
 #include <time.h>
 #include <conio.h>
+#include "Battle.h"
 
 #define TRADE_WINDOW_ROWS 30
 #define TRADE_WINDOW_COLUMNS 121
@@ -28,14 +29,6 @@ int CorPosition0Tr = 0;
 int CorPosition1Tr = 0;
 
 
-struct hero
-{
-	int HP, MP, DMG, ARM, MON;
-	int MaxHP, MaxMP;
-	int Resist;
-	int Crit;
-	int Invent[6];
-};
 
 struct cost
 {

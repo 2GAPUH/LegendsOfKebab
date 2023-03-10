@@ -22,8 +22,8 @@ void House(hero Laplas) {
 	{
 		//GetMapFromFile(locations[currentLocation], map);
 		PrintMap(hero, map, NULL, NULL);
-		heroMovement(&hero, map);
-		heroColision(hero, NULL, NULL, LocAnCor, currentLocation, Laplas);
+		heroMovement(&hero, map, Laplas);
+		heroColision(hero, NULL, NULL, LocAnCor, currentLocation, Laplas, map);
 		goNextLocation(startLocation, currentLocation, 12, 13, Laplas);
 	}
 }

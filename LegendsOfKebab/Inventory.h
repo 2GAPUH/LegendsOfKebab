@@ -1,4 +1,5 @@
 #pragma once
+#include "Battle.h"
 #define INVENTORY_WINDOW_ROWS 29
 #define INVENTORY_WINDOW_COLUMNS 120
 #define INVENTORY_COMMENTS_COLUMNS 270
@@ -11,10 +12,11 @@
 #define HealthPotion 100
 #define ManaPotion 50
 
-hero UseHealthPotion(hero Laplas);
+
 hero UseManaPotion(hero Laplas);
 hero UseKebab(hero Laplas);
-hero Inventory(hero Laplas, int seed);
+hero UseHealthPotion(hero Laplas);
+hero Inventory(hero &Laplas, int seed);
 void GetObjectPosition(char* ar_position[OBJ_WINDOW], char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS]);
 void GetDescriptionPosition(char* ar_position[DESC_WINDOW], char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS]);
 void GetInventoryWindow(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS]);
@@ -24,6 +26,6 @@ void InventoryObjectPrint(char* ar_position[OBJ_WINDOW], int type);
 void InventoryDescriptionPrint(char* ar_position[DESC_WINDOW], int type);
 void PrintInventoryWindow(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS]);
 void CheckLaplasInvStats(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], hero Laplas);
-void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], char* description_position[DESC_WINDOW], hero Laplas);
+void MovingInventory(char* choice_obj[], char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], char* description_position[DESC_WINDOW], hero &Laplas);
 void InventoryClear(char* array[]);
 void CheckCountObjects(char InventoryWindow[INVENTORY_WINDOW_ROWS][INVENTORY_WINDOW_COLUMNS], hero Laplas);
