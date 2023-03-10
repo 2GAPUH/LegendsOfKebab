@@ -92,7 +92,7 @@ void CheckEnemyStats(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 
 
 }
-
+/*
 hero UseHealthPotion(hero Laplas)
 {
 	int HealthPotion = 50;
@@ -100,6 +100,7 @@ hero UseHealthPotion(hero Laplas)
 	if (Laplas.HP > Laplas.MaxHP) Laplas.HP = Laplas.MaxHP;
 	return Laplas;
 }
+*/
 
 void GetBattleComments()
 {

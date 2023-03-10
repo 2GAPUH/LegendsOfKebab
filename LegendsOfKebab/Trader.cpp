@@ -19,10 +19,11 @@
 #define DESC_WIDTH 40
 #define COST_WINDOW_ROWS 5
 #define COST_WINDOW_COLUMNS 3
+
 char TradeComments[TRADE_COMMENTS_COUNT][TRADE_COMMENTS_COLUMNS];
 char descriptionTr[DESC_HEIGHT][DESC_WIDTH];
 char objectsTr[OBJ_HEIGHT][OBJ_WIDTH];
-int CorretPosition = 0;
+int CorPosition = 0;
 int CorPosition0Tr = 0;
 int CorPosition1Tr = 0;
 
@@ -40,6 +41,7 @@ struct cost
 {
 	int cost1, cost2, cost3, cost4, cost5;
 };
+
 
 void TradeInventoryClear(char* array[], int n)
 {
@@ -164,7 +166,7 @@ void TradeCommentsClear(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS])
 		*TradeCommentsPosition[i] = 32;
 
 	}
-	CorretPosition = 0;
+	CorPosition = 0;
 
 }
 
@@ -187,10 +189,10 @@ void GetTradeCommentsPosition(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS
 
 void TradeCommentsPrint(char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS], int type, char Array[TRADE_COMMENTS_COUNT][TRADE_COMMENTS_COLUMNS])
 {
-	for (int i = 0; CorretPosition < TRADE_COMMENTS_COLUMNS; CorretPosition++, i++)
+	for (int i = 0; CorPosition < TRADE_COMMENTS_COLUMNS; CorPosition++, i++)
 	{
 		if (Array[type][i] == '\n') break;
-		*TradeCommentsPosition[CorretPosition] = Array[type][i];
+		*TradeCommentsPosition[CorPosition] = Array[type][i];
 
 	}
 }
