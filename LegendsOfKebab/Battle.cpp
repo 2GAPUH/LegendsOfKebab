@@ -30,7 +30,7 @@ struct enemy
 	int Stun, Burning;
 };
 
-void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS])
+void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int mob)
 {
 	FILE* f;
 

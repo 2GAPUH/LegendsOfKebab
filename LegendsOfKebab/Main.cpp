@@ -8,6 +8,8 @@
 #include "StartMenu.h"
 #include "FirstLoc.h"
 #include "Inventory.h"
+#include "KebabLoc.h"
+
 
 
 int main()
