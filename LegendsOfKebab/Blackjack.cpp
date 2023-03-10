@@ -4,6 +4,7 @@
 #include <conio.h>
 #include<windows.h>
 #include<stdlib.h>
+#include "Inventory.h"
 void BlackjackCards1(int x)
 {
 
@@ -1280,12 +1281,12 @@ void BlackjackCards4(int x)
 			break;
 		}
 }
-int BlackJack() {
+int BlackJack(hero &Laplas) {
 	setlocale(LC_ALL, "ru");
+	system("cls");
 	srand(time(NULL));
+	printf_s("Ваш баланс:%d \n", Laplas.MON);
 	int Igrok, Bot, i, bet, ballance, IgrokCard, BotCard, IgrokSum = 0, BotSum = 0,flag=0,flag1=0;
-	printf_s("Введите балланс \n");
-	scanf_s("%d", &ballance);
 	do {
 		printf_s("Выбирите действие \n1 --> Сделать ставку \n2 -->  получить свои карты \n3 --> Взять ещё карту \n4 --> карты бота  \n5 --> Узнать карты \n 6 --> выйти из игры \n");
 		scanf_s("%d", &i);
@@ -1295,23 +1296,31 @@ int BlackJack() {
 			printf_s("Введите сумму ставки --> ");
 			do {
 				scanf_s("%d", &bet);
-				if (bet > ballance || bet < 0)
+				if (bet > Laplas.MON || bet < 0)
 					printf_s("Ваша ставка некорректна ");
-			} while (bet > ballance || bet <= 0);
+			} while (bet > Laplas.MON || bet <= 0);
 			break;
 		case 2:
 			system("cls");
 			for (int i = 0; i < 2; i++) {
 				Igrok = rand() % 13 + 1;
 				IgrokCard = rand() % 4 + 1;
-				if (IgrokCard == 1)
+				if (IgrokCard == 1) {
 					BlackjackCards1(Igrok);
-				if (IgrokCard == 2)
+					_getch();
+				}
+				if (IgrokCard == 2) {
 					BlackjackCards2(Igrok);
-				if (IgrokCard == 3)
+					_getch();
+				}
+				if (IgrokCard == 3) {
 					BlackjackCards3(Igrok);
-				if (IgrokCard == 4)
+					_getch();
+				}
+				if (IgrokCard == 4) {
 					BlackjackCards4(Igrok);
+					_getch();
+				}
 				if (Igrok > 10)
 					Igrok = 10;
 				if (Igrok == 1)
@@ -1370,16 +1379,16 @@ int BlackJack() {
 		case 5:
 			system("cls");
 			if ((IgrokSum > BotSum && IgrokSum <22) || BotSum>21 ) {
-				ballance += bet;
-				printf_s("Вы победили , держите свой выигрышь \n Ваш балланс --> %d ", ballance);
+				Laplas.MON += bet;
+				printf_s("Вы победили , держите свой выигрышь \n Ваш балланс --> %d ", Laplas.MON);
 			}
 			if ((IgrokSum < BotSum && BotSum < 22) || IgrokSum > 21) {
-				ballance -= bet;
-				printf_s(" Вы проиграли \n Ваш балланс --> %d ", ballance);
+				Laplas.MON -= bet;
+				printf_s(" Вы проиграли \n Ваш балланс --> %d ", Laplas.MON);
 			}
 			if (BotSum == IgrokSum) {
 				printf_s("Ничья");
-				printf_s(" Ваш балланс --> %d \n", ballance);
+				printf_s(" Ваш балланс --> %d \n", Laplas.MON);
 			}break;
 
 			}
