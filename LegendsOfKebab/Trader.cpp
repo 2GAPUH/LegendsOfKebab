@@ -325,7 +325,7 @@ void TradeCheckCountObjects(char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COL
 	TradeWindow[28][35] = Laplas.Invent[4] % 10 + 48;
 }
 
-void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
+void TradingWithTraderBuy(hero &Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
 {
 	char pressedKey;
 	char ans;
@@ -504,7 +504,7 @@ void TradingWithTraderBuy(hero Laplas, cost Cost, char TradeWindow[TRADE_WINDOW_
 
 
 
-void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindowSell[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
+void TradingWithTraderSell(hero &Laplas, cost Cost, char TradeWindowSell[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS], int seed, char* TradeCommentsPosition[TRADE_WINDOW_ROWS])
 {
 	char pressedKey;
 	char ans;
@@ -624,8 +624,9 @@ void TradingWithTraderSell(hero Laplas, cost Cost, char TradeWindowSell[TRADE_WI
 
 
 
-hero Trade(hero Laplas, int seed)
+hero Trade(hero &Laplas, int seed)
 {
+	system("chcp 866");
 	char TradeWindow[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS];
 	char TradeWindowSell[TRADE_WINDOW_ROWS][TRADE_WINDOW_COLUMNS];
 	char* TradeCommentsPosition[TRADE_COMMENTS_COLUMNS];
@@ -689,5 +690,7 @@ hero Trade(hero Laplas, int seed)
 			return Laplas;
 	} while (pressedKey != '0');
 
+
+	system("chcp 1251");
 	return Laplas;
 }

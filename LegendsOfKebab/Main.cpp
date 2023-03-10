@@ -8,7 +8,8 @@
 #include "StartMenu.h"
 #include "Trader.h"
 #include "Inventory.h"
-#include "Map.h"
+#include "FirstLoc.h"
+#include "CaveLoc.h"
 
 
 int main()
@@ -24,6 +25,11 @@ int main()
 
 	StartMenu();
 
+	CaveLoc(107, 8, Laplas);
+
+	//FirstLoc(10, 25, Laplas);
+
+	/*
 	do {
 		system("cls");
 		printf("Trade(1) or Inv(2) or Battle(3) or Map(4)?"); scanf("%d", &a);
@@ -36,7 +42,7 @@ int main()
 	else if (a == 3)
 		Laplas = Battle(Laplas, seed);
 	else if (a == 4)
-		map();
+		map();*/
 
 
 

@@ -21,7 +21,7 @@ char BattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 char HeroBattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 char EnemyBattleComments[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
 char Events[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS];
-int CorretPosition = 0;
+int CorretPosition_0 = 0;
 
 struct enemy
 {
@@ -59,7 +59,7 @@ void BattleCommentsClear(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS])
 		*BattleCommentsPosition[i] = 32;
 
 	}
-	CorretPosition = 0;
+	CorretPosition_0 = 0;
 }
 
 
@@ -181,10 +181,10 @@ void GetBattleCommentsPosition(char* BattleCommentsPosition[BATTLE_COMMENTS_COLU
 
 void BattleCommentsPrint(char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], int type, char Array[BATTLE_COMMENTS_COUNT][BATTLE_COMMENTS_COLUMNS])
 {
-	for (int i = 0; CorretPosition < BATTLE_COMMENTS_COLUMNS; CorretPosition++, i++)
+	for (int i = 0; CorretPosition_0 < BATTLE_COMMENTS_COLUMNS; CorretPosition_0++, i++)
 	{
 		if (Array[type][i] == '\n') break;
-		*BattleCommentsPosition[CorretPosition] = Array[type][i];
+		*BattleCommentsPosition[CorretPosition_0] = Array[type][i];
 
 	}
 }
@@ -250,7 +250,7 @@ int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey)
 
 
 
-void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char* ChoiceMagic[])
+hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS], int seed, char* BattleCommentsPosition[BATTLE_COMMENTS_COLUMNS], char* ChoiceMagic[])
 {
 	char pressedKey;
 	int temp, tempSpel;
@@ -350,6 +350,7 @@ void FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 	} while (Laplas.HP > 0 && Kostyan.HP > 0);
 
+	return Laplas;
 }
 
 
@@ -374,7 +375,7 @@ hero Battle(hero Laplas, int seed)
 	PrintBattleWindow(BattleWindow, CommentsPosition);
 
 
-	FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition, ChoiceMagic);
+	Laplas = FightWithEnemy(Laplas, Kostyan, BattleWindow, seed, CommentsPosition, ChoiceMagic);
 
 
 	system("chcp 1251");

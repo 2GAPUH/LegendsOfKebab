@@ -33,7 +33,22 @@
     <ClCompile Include="Trader.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="CaveLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="KebabLoc.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +65,22 @@
     <ClInclude Include="Inventory.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="CaveLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="KebabLoc.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Source.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -73,7 +103,10 @@
     <Text Include="StartMenu.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
-    <Text Include="HeroBattleComments.txt">
+    <Text Include="DescriptionItems.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="ItemsTr.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
     <Text Include="EnemyBattleComments.txt">
@@ -82,17 +115,39 @@
     <Text Include="Events.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
-    <Text Include="Items.txt" />
-    <Text Include="TradeComments.txt" />
-    <Text Include="DescriptionItems.txt">
+    <Text Include="HeroBattleComments.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
-    <Text Include="ItemsTr.txt">
+    <Text Include="Items.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="TradeComments.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\balnk.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\cave.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\house.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\kebab_room.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\map.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="maps\shop.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="main_full.wav">
+    <Media Include="Atack.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="Crit.wav">
       <Filter>файлы звука</Filter>
     </Media>
     <Media Include="Fire_rain.wav">
@@ -104,13 +159,19 @@
     <Media Include="Grom.wav">
       <Filter>файлы звука</Filter>
     </Media>
-    <Media Include="Atack.wav">
-      <Filter>файлы звука</Filter>
-    </Media>
-    <Media Include="Crit.wav">
-      <Filter>файлы звука</Filter>
-    </Media>
     <Media Include="Wall.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main_full.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main_loop.wav">
+      <Filter>файлы звука</Filter>
+    </Media>
+    <Media Include="main_menu_full.wav">
       <Filter>файлы звука</Filter>
     </Media>
   </ItemGroup>

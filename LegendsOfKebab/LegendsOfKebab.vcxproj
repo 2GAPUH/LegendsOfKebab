@@ -128,32 +128,64 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="CaveLoc.cpp" />
+    <ClCompile Include="FirstLoc.cpp" />
+    <ClCompile Include="HouseLoc.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="KebabLoc.cpp" />
     <ClCompile Include="Main.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="Trader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="CaveLoc.h" />
+    <ClInclude Include="FirstLoc.h" />
+    <ClInclude Include="HouseLoc.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="KebabLoc.h" />
+    <ClInclude Include="Shop.h" />
+    <ClInclude Include="Source.h" />
     <ClInclude Include="StartMenu.h" />
     <ClInclude Include="Trader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Battle.txt" />
-    <Text Include="BattleComments.txt" />
     <Text Include="DescriptionItems.txt" />
+    <Text Include="EnemyBattleComments.txt" />
+    <Text Include="Events.txt" />
+    <Text Include="HeroBattleComments.txt" />
     <Text Include="Inventory.txt" />
     <Text Include="Items.txt" />
     <Text Include="ItemsTr.txt" />
+    <Text Include="maps\balnk.txt" />
+    <Text Include="maps\cave.txt" />
+    <Text Include="maps\house.txt" />
+    <Text Include="maps\kebab_room.txt" />
+    <Text Include="maps\map.txt" />
+    <Text Include="maps\shop.txt" />
     <Text Include="TradeComments.txt" />
     <Text Include="StartMenu.txt" />
     <Text Include="Trader_Buy.txt" />
     <Text Include="Trader_Menu.txt" />
     <Text Include="Trader_Sell.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Atack.wav" />
+    <Media Include="Crit.wav" />
+    <Media Include="Fireball.wav" />
+    <Media Include="Fire_rain.wav" />
+    <Media Include="Grom.wav" />
+    <Media Include="main.wav" />
+    <Media Include="main_full.wav" />
+    <Media Include="main_loop.wav" />
+    <Media Include="main_menu_full.wav" />
+    <Media Include="Wall.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
