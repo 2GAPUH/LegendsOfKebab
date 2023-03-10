@@ -16,6 +16,7 @@
 #include "Trader.h"
 #include "Inventory.h"
 #include "Dice.h"
+#include "BlackJack.h"
 
 
 #pragma comment (lib, "winmm.lib")
@@ -177,7 +178,7 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 
 	if (map[main_char.y][main_char.x] == 'B')
 	{
-		//BlackJack()
+		BlackJack(Laplas);
 	}
 
 	for (int i = 0; i < sizeof(anLocCor); i++)
