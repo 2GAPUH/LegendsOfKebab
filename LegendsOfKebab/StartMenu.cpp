@@ -44,6 +44,4 @@ void StartMenu()
 	GetStartMenuWindow(StartMenuWindow);
 
 	PrintStartMenuWindow(StartMenuWindow);
-
-	_getch();
 }

@@ -9,8 +9,9 @@
 #include "FirstLoc.h"
 #include "Inventory.h"
 #include "KebabLoc.h"
-
-
+#include <conio.h>
+#include "Load.h"
+#include "Source.h"
 
 int main()
 {
@@ -20,15 +21,31 @@ int main()
 	system("mode con cols=122  lines=31");
 	int seed, a;
 	srand(seed = time(NULL));
+	char pressedKey;
 
 	hero Laplas = { 200, 65, 30, 5, 760, 250, 100, 0, 0 , 1, 10, 20, 1, 0,0};
-
+	int x, y, currentLocation;
 
 
 	StartMenu();
 
-	//Kebab(Laplas);
-	FirstLoc(10, 25, Laplas);
+	do {
+		pressedKey = _getch();
+
+		if (pressedKey == 13)
+		{
+			FirstLoc(10, 25, Laplas);
+		}
+		else if (pressedKey == 32)
+		{
+			load(Laplas, x, y, currentLocation);
+			goNextLocation(10, currentLocation, x, y, Laplas);
+		}
+
+	} while (pressedKey != 27);
+
+
+
 
 	/*
 	do {
