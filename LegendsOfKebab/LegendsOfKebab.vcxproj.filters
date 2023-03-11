@@ -175,6 +175,9 @@
     <Text Include="BadEnd.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="PostScriptum.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Atack.wav">

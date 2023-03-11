@@ -183,6 +183,7 @@
     <Text Include="maps\kebab_room.txt" />
     <Text Include="maps\map.txt" />
     <Text Include="maps\shop.txt" />
+    <Text Include="PostScriptum.txt" />
     <Text Include="TradeComments.txt" />
     <Text Include="StartMenu.txt" />
     <Text Include="Trader_Buy.txt" />

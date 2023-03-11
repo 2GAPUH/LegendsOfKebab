@@ -43,8 +43,10 @@ void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 	else if(mob == 2)
 		fopen_s(&f, "BadEnd.txt", "r");
 
-	else 
+	else if(mob == 3)
 		fopen_s(&f, "HappyEnd.txt", "r");
+	else
+		fopen_s(&f, "PostScriptum.txt", "r");
 
 	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
 		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
@@ -194,12 +196,12 @@ int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey)
 	if (pressedKey == 32)
 		Laplas->Crit += 1;
 	//Сплэл стены
-	if (pressedKey == '4')
+	if (pressedKey == '3')
 	{
 		Laplas->Resist = 1;
 	}
 	//Спэл молнии
-	if (pressedKey == '1')
+	if (pressedKey == '0')
 	{
 		Kostyan->Stun = 1;
 		return 0;
@@ -215,13 +217,13 @@ int FightCalculation(hero* Laplas, enemy* Kostyan, char pressedKey)
 		Kostyan->Stun = 0;
 	}
 	//Огненый шар
-	if (pressedKey == '2')
+	if (pressedKey == '1')
 	{
 		Kostyan->HP -= FIREBALL_DAMAGE;
 		return 0;
 	}
 	//Спэл поджога
-	if (pressedKey == '3')
+	if (pressedKey == '2')
 	{
 		Kostyan->Burning = 2;
 		Kostyan->HP -= BURNING_DAMAGE;
@@ -299,21 +301,25 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 				{
 					Laplas.MP -= LIGHTING_ATACK_MANA_COST;
 					PlaySound(L"Grom.wav", NULL, SND_SYNC);
+					pressedKey = '0';
 				}
 				else if (flag == 1 && Laplas.MP >= FIREBALL_MANA_COST)
 				{
 					Laplas.MP -= FIREBALL_MANA_COST;
 					PlaySound(L"Fireball.wav", NULL, SND_SYNC);
+					pressedKey = '1';
 				}
 				else if (flag == 2 && Laplas.MP >= FIRE_RAIN_MANA_COST)
 				{
 					Laplas.MP -= FIRE_RAIN_MANA_COST;
 					PlaySound(L"Fire_rain.wav", NULL, SND_SYNC);
+					pressedKey = '2';
 				}
 				else if (flag == 3 && Laplas.MP >= STONE_WALL_MANA_COST)
 				{
 					Laplas.MP -= STONE_WALL_MANA_COST;
 					PlaySound(L"Wall.wav", NULL, SND_SYNC);
+					pressedKey = '3';
 				}
 				else
 				{
@@ -363,6 +369,9 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 	{
 		PlaySound(L"boss_win.wav", NULL, SND_SYNC);
 		GetBattleWindow(BattleWindow, 3);
+		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+		pressedKey = _getch();
+		GetBattleWindow(BattleWindow, 4);
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 		pressedKey = _getch();
 		exit(1);
