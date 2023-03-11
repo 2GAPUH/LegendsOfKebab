@@ -35,8 +35,8 @@ int main()
 
 		if (pressedKey == 13)
 		{
-			//FirstLoc(10, 25, Laplas);
-			Kebab(Laplas);
+			FirstLoc(10, 25, Laplas);
+			//Kebab(Laplas);
 			//Shop(Laplas);
 		}
 		else if (pressedKey == 32)
