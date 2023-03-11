@@ -40,8 +40,11 @@ void GetBattleWindow(char BattleWindow[BATTLE_WINDOW_ROWS][BATTLE_WINDOW_COLUMNS
 	else if(mob == 0)
 		fopen_s(&f, "Battle.txt", "r");
 
-	else
+	else if(mob == 2)
 		fopen_s(&f, "BadEnd.txt", "r");
+
+	else 
+		fopen_s(&f, "HappyEnd.txt", "r");
 
 	for (int i = 0; i < BATTLE_WINDOW_ROWS; i++)
 		for (int n = 0; n < BATTLE_WINDOW_COLUMNS; n++)
@@ -334,6 +337,8 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 		else if (pressedKey == 9)
 		{
 			Inventory(Laplas, seed);
+			system("chcp 866");
+			system("cls");
 		}
 
 		else continue;
@@ -356,8 +361,8 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 	if (Kostyan.HP <= 0 && mob == 1)
 	{
-		PlaySound(L"the_end.wav", NULL, SND_SYNC);
-		GetBattleWindow(BattleWindow, 2);
+		PlaySound(L"boss_win.wav", NULL, SND_SYNC);
+		GetBattleWindow(BattleWindow, 3);
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 		pressedKey = _getch();
 		exit(1);

@@ -61,7 +61,7 @@ hero UseKebab(hero Laplas)
 {
 	Laplas.HP += 75;
 	Laplas.MP += 75;
-	if (Laplas.HP > Laplas.MaxHP) Laplas.HP = Laplas.MaxMP;
+	if (Laplas.HP > Laplas.MaxHP) Laplas.HP = Laplas.MaxHP;
 	if (Laplas.MP > Laplas.MaxMP) Laplas.MP = Laplas.MaxMP;
 	return Laplas;
 }
