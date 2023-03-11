@@ -1,5 +1,5 @@
 Spellcast                                                                
-1 - Lightning attack (imposes a stun effect)                             2 - Fireball (spell with high damage).                                   3 - Fire Rain (Inflicts Ignite and Damage Over Time)                     4 - Stone Wall (Blocks the target's attack)                              0 - Exit                                                                 
+50MP - Lightning attack (imposes a stun effect)                          100MP - Fireball (spell with high damage).                               20MP - Fire Rain (Inflicts Ignite and Damage Over Time)                  40MP - Stone Wall (Blocks the target's attack)                           Exit                                                                 
 Mana shortage                                                            
 Not enough mana to use.                                                  
 

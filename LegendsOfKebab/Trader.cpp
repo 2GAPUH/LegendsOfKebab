@@ -350,7 +350,7 @@ void TradingWithTraderBuy(hero &Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 				}
 				else
 				{
-					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					TradeCommentsPrint(TradeCommentsPosition, 25, TradeComments);
 					PrintTradeWindow(TradeWindow);
 					TradeCommentsClear(TradeCommentsPosition);
 					do {
@@ -445,7 +445,7 @@ void TradingWithTraderBuy(hero &Laplas, cost Cost, char TradeWindow[TRADE_WINDOW
 				}
 				else
 				{
-					TradeCommentsPrint(TradeCommentsPosition, 5, TradeComments);
+					TradeCommentsPrint(TradeCommentsPosition, 25, TradeComments);
 					PrintTradeWindow(TradeWindow);
 					TradeCommentsClear(TradeCommentsPosition);
 					do {
@@ -572,7 +572,7 @@ void TradingWithTraderSell(hero &Laplas, cost Cost, char TradeWindowSell[TRADE_W
 		}
 		else if (pressedKey == '3')
 		{
-			TradeCommentsPrint(TradeCommentsPosition, 19, TradeComments);
+			TradeCommentsPrint(TradeCommentsPosition, 20, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 3, TradeComments);
 			TradeCommentsPrint(TradeCommentsPosition, 4, TradeComments);
 			PrintTradeWindow(TradeWindowSell);

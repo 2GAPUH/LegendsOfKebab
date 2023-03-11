@@ -151,7 +151,7 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 			{
 				enemyes[i].x = -1;
 				Laplas = Battle(Laplas, 10, 0);
-
+				PlaySound(L"main_full", NULL, SND_LOOP | SND_ASYNC);
 			}
 		}
 	}
@@ -162,6 +162,7 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 			if (main_char.x == npcs[i].x && main_char.y == npcs[i].y)
 			{
 				Trade(Laplas, 10);
+				PlaySound(L"main_full", NULL, SND_LOOP | SND_ASYNC);
 			}
 		}
 	}
@@ -169,17 +170,20 @@ void heroColision(Hero &main_char, Enemy *enemyes, Npc* npcs, AnLocCord* anLocCo
 	if ((curLoc == KEBAB_ROOM) && (main_char.x == 70 && main_char.y == 17))
 	{
 		Laplas = Battle(Laplas, 10, 1);
-		
+		system("chcp 1251");
 	}
 
 	if (map[main_char.y][main_char.x] == 'D')
 	{
 		Dice(Laplas);
+		PlaySound(L"main_full", NULL, SND_LOOP | SND_ASYNC);
+		system("chcp 1251");
 	}	
 
 	if (map[main_char.y][main_char.x] == 'B')
 	{
 		BlackJack(Laplas);
+		PlaySound(L"main_full", NULL, SND_LOOP | SND_ASYNC);
 	}
 
 	for (int i = 0; i < sizeof(anLocCor); i++)

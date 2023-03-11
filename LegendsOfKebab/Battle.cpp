@@ -321,10 +321,18 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 					PlaySound(L"Wall.wav", NULL, SND_SYNC);
 					pressedKey = '3';
 				}
-				else
+				else if(flag ==4)
 				{
+
 					PrintBattleWindow(BattleWindow, BattleCommentsPosition);
 					continue;
+				}
+
+				else
+				{
+					BattleCommentsPrint(BattleCommentsPosition, 3, Events);
+					//PrintBattleWindow(BattleWindow, BattleCommentsPosition);
+
 				}
 				tempSpel = FightCalculation(&Laplas, &Kostyan, pressedKey);
 				//BattleCommentsPrint(BattleCommentsPosition, tempSpel);
@@ -349,8 +357,13 @@ hero FightWithEnemy(hero Laplas, enemy Kostyan, char BattleWindow[BATTLE_WINDOW_
 
 		else continue;
 
-		if (Kostyan.HP < 1) Kostyan.HP = 0;
-
+		if (Kostyan.HP < 1){
+			Kostyan.HP = 0;
+		    Laplas.MON += 100;
+			if (Laplas.MON>=9999) {
+				Laplas.MON = 9999;
+			}
+		}
 		CheckLaplasStats(BattleWindow, Laplas);
 		CheckEnemyStats(BattleWindow, Kostyan);
 		PrintBattleWindow(BattleWindow, BattleCommentsPosition);

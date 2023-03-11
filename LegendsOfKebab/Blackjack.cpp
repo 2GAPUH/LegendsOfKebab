@@ -1282,7 +1282,7 @@ void BlackjackCards4(int x)
 		}
 }
 int BlackJack(hero &Laplas) {
-	setlocale(LC_ALL, "ru");
+	system("chcp 1251");
 	system("cls");
 	srand(time(NULL));
 	printf_s("Ваш баланс:%d \n", Laplas.MON);

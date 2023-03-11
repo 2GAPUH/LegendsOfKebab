@@ -68,7 +68,7 @@ void kosti(int x)
 int Dice(hero &Laplas)
 {
 
-	setlocale(LC_ALL, "ru");
+	system("chcp 1251");
 	system("cls");
 	srand(time(NULL));
 	int Igrok, Bot, i, bet;
@@ -110,7 +110,6 @@ int Dice(hero &Laplas)
 			}break;
 		}
 	} while (i != 4);
-
 	return 0;
 
 }

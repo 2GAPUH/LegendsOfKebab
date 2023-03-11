@@ -12,13 +12,14 @@
 #include <conio.h>
 #include "Load.h"
 #include "Source.h"
+#include "Shop.h"
 
 int main()
 {
 	system("chcp 866");
 	system("color F0");
 	system("cls");
-	system("mode con cols=122  lines=31");
+	system("mode con cols=123  lines=31");
 	int seed, a;
 	srand(seed = time(NULL));
 	char pressedKey;
@@ -36,6 +37,7 @@ int main()
 		{
 			//FirstLoc(10, 25, Laplas);
 			Kebab(Laplas);
+			//Shop(Laplas);
 		}
 		else if (pressedKey == 32)
 		{
